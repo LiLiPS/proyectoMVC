@@ -1,5 +1,5 @@
 //Parada Sánchez Liliana
-package modelo;
+package javabeans;
 
 public class SabanaBean {
 	private String clave_horario, clave_materia, clave_carrera, materia, carrera;

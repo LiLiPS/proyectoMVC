@@ -1,9 +1,9 @@
 //Parada Sánchez Liliana
-package modelo;
+package javabeans;
 
 public class ReporteBean {
 	private int alumnos, semestre, horas_t, horas_p, creditos, horas;
-	private String clave_grupo, clave_materia, materia, grupo, aula, abreviaturaCarrera;
+	private String clave_materia, materia, grupo, aula, abreviaturaCarrera;
 	private String lunes, martes, miercoles, jueves, viernes;
 	private String nombreMaestro, clave_maestro;
 
@@ -27,8 +27,8 @@ public class ReporteBean {
 		return creditos;
 	}
 
-	public String getClave_grupo() {
-		return clave_grupo;
+	public int getHoras() {
+		return horas;
 	}
 
 	public String getClave_materia() {
@@ -99,8 +99,8 @@ public class ReporteBean {
 		this.creditos = creditos;
 	}
 
-	public void setClave_grupo(String clave_grupo) {
-		this.clave_grupo = clave_grupo;
+	public void setHoras(int horas) {
+		this.horas = horas;
 	}
 
 	public void setClave_materia(String clave_materia) {
@@ -151,11 +151,4 @@ public class ReporteBean {
 		this.clave_maestro = clave_maestro;
 	}
 
-	public int getHoras() {
-		return horas;
-	}
-
-	public void setHoras(int horas) {
-		this.horas = horas;
-	}
 }
