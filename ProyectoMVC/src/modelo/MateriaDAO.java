@@ -83,7 +83,7 @@ public class MateriaDAO {
 	public static MateriaBean getMateriabyID(int id){
 		BD bdConexion = new BD();
         MateriaBean m = new MateriaBean();  
-        String instruccion = "select * from materia where pk_materia=?";
+        String instruccion = "select * from view_materias where pk_materia=?";
           
         try{  
             Connection con = bdConexion.getConnection();  
@@ -91,14 +91,15 @@ public class MateriaDAO {
             ps.setInt(1,id);  
             ResultSet rs = ps.executeQuery();  
             if(rs.next()){ 
-                m.setPk_materia(rs.getInt(1));
-                m.setFk_carrera(rs.getInt(2));
-                m.setClave_materia(rs.getString(3));
-                m.setNombre(rs.getString(4));  
-                m.setSemestre(rs.getInt(5));
-                m.setHoras_t(rs.getInt(6));
-                m.setHoras_p(rs.getInt(7));
-                m.setCreditos(rs.getInt(8));
+            	m.setPk_materia(rs.getInt("pk_materia"));
+                m.setFk_carrera(rs.getInt("fk_carrera"));
+                m.setNombre_carrera(rs.getString("nombre_carrera"));
+                m.setClave_materia(rs.getString("clave_materia"));
+                m.setNombre(rs.getString("nombre"));  
+                m.setSemestre(rs.getInt("semestre"));
+                m.setHoras_t(rs.getInt("horas_t"));
+                m.setHoras_p(rs.getInt("horas_p"));
+                m.setCreditos(rs.getInt("creditos"));
             }  
             con.close();  
         }catch(Exception ex){
@@ -111,7 +112,7 @@ public class MateriaDAO {
 	public static List<MateriaBean> getMaterias(){
 		BD bdConexion = new BD();
         List<MateriaBean> lista = new ArrayList<MateriaBean>();
-        String instruccion = "select * from materia";
+        String instruccion = "select * from view_materias";
           
         try{  
             Connection con = bdConexion.getConnection();  
@@ -119,14 +120,15 @@ public class MateriaDAO {
             ResultSet rs = ps.executeQuery();  
             while(rs.next()){  
                 MateriaBean m = new MateriaBean();  
-                m.setPk_materia(rs.getInt(1));
-                m.setFk_carrera(rs.getInt(2));
-                m.setClave_materia(rs.getString(3));
-                m.setNombre(rs.getString(4));  
-                m.setSemestre(rs.getInt(5));
-                m.setHoras_t(rs.getInt(6));
-                m.setHoras_p(rs.getInt(7));
-                m.setCreditos(rs.getInt(8));
+                m.setPk_materia(rs.getInt("pk_materia"));
+                m.setFk_carrera(rs.getInt("fk_carrera"));
+                m.setNombre_carrera(rs.getString("nombre_carrera"));
+                m.setClave_materia(rs.getString("clave_materia"));
+                m.setNombre(rs.getString("nombre"));  
+                m.setSemestre(rs.getInt("semestre"));
+                m.setHoras_t(rs.getInt("horas_t"));
+                m.setHoras_p(rs.getInt("horas_p"));
+                m.setCreditos(rs.getInt("creditos"));
                 lista.add(m);  
             }  
             con.close();  
@@ -140,7 +142,7 @@ public class MateriaDAO {
 	public static List<MateriaBean> getMateriasbyClave(String clave){ 
 		BD bdConexion = new BD();
         List<MateriaBean> lista = new ArrayList<MateriaBean>(); 
-        String instruccion = "select * from materia where clave_materia LIKE ?";
+        String instruccion = "select * from view_materias where clave_materia LIKE ?";
           
         try{  
             Connection con = bdConexion.getConnection();  
@@ -148,15 +150,16 @@ public class MateriaDAO {
             ps.setString(1,"%" + clave + "%");  
             ResultSet rs = ps.executeQuery(); 
             while(rs.next()){  
-                MateriaBean m = new MateriaBean();  
-                m.setPk_materia(rs.getInt(1));
-                m.setFk_carrera(rs.getInt(2));
-                m.setClave_materia(rs.getString(3));
-                m.setNombre(rs.getString(4));  
-                m.setSemestre(rs.getInt(5));
-                m.setHoras_t(rs.getInt(6));
-                m.setHoras_p(rs.getInt(7));
-                m.setCreditos(rs.getInt(8));
+            	MateriaBean m = new MateriaBean();  
+                m.setPk_materia(rs.getInt("pk_materia"));
+                m.setFk_carrera(rs.getInt("fk_carrera"));
+                m.setNombre_carrera(rs.getString("nombre_carrera"));
+                m.setClave_materia(rs.getString("clave_materia"));
+                m.setNombre(rs.getString("nombre"));  
+                m.setSemestre(rs.getInt("semestre"));
+                m.setHoras_t(rs.getInt("horas_t"));
+                m.setHoras_p(rs.getInt("horas_p"));
+                m.setCreditos(rs.getInt("creditos"));
                 lista.add(m);  
             }  
             con.close();  

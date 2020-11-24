@@ -2,6 +2,7 @@
 package controlador;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,8 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import javabeans.UsuarioBean;
+import javabeans.LoginBean;
 import modelo.LoginDAO;
+import modelo.UsuarioDAO;
 
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
@@ -34,19 +36,21 @@ public class LoginServlet extends HttpServlet {
 		String p=request.getParameter("contrasena");
 		
 		String pagina = "login.jsp";
+		int id = LoginDAO.validar(n, p);
+		
 
-		if (LoginDAO.validar(n, p)) {
-			UsuarioBean us = LoginDAO.rolUsuario(n, p);
+		if (id>0) {
+			List<LoginBean> us = UsuarioDAO.rolUsuario(id);
 			HttpSession session = request.getSession();
-			session.setAttribute("usu", us);
-			session.setAttribute("titulo", us.getTitulo());
-			session.setAttribute("usuario", us.getNombre());
-			session.setAttribute("rol", us.getRol());
-			session.setAttribute("id_usuario", us.getId_usuario());
+			session.setAttribute("usu", us.get(0));
+			session.setAttribute("titulo", us.get(0).getTitulo());
+			session.setAttribute("usuario", us.get(0).getNombre());
+			session.setAttribute("rol", us.get(0).getRol());
+			session.setAttribute("id_usuario", us.get(0).getPk_usuario());
 			pagina = "/menu.jsp";
 		} else {
 			System.out.print("Lo sentimos, error de usuario o contraseña!");
-			pagina = "/login.jsp";
+			pagina = "/loginError.jsp";
 		}
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(pagina);

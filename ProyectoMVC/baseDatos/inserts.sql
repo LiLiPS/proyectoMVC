@@ -1,15 +1,23 @@
 USE DATABASE proyectomvc;
 
+
+
 /*CARRERAS*/
-INSERT INTO carrera (nombre_carrera, abreviatura_carrera)
-values ('Ingeniería en Sistemas Computacionales', 'ISX'),
-	   ('Ingeniería Electrónica', 'ELX'),
-	   ('Ingeniería Electromecánica', 'EMX'),
-	   ('Ingeniería en Gestión Empresarial', 'GE9'),
-	   ('Ingeniería Industrial', 'IIX'),
-	   ('Ingeniería en Logística', 'LOX'),
-	   ('Ingeniería Mecatrónica', 'MCX'),
-	   ('Ingeniería en Tecnologías de la Información y Comunicaciones', 'TIX');
+INSERT INTO carrera (fk_departamento, nombre_carrera, abreviatura_carrera)
+values ( ,'Ingeniería en Sistemas Computacionales', 'ISX'),
+	   ( ,'Ingeniería Electrónica', 'ELX'),
+	   ( ,'Ingeniería Electromecánica', 'EMX'),
+	   ( ,'Ingeniería en Gestión Empresarial', 'GE9'),
+	   ( ,'Ingeniería Industrial', 'IIX'),
+	   ( ,'Ingeniería en Logística', 'LOX'),
+	   ( ,'Ingeniería Mecatrónica', 'MCX'),
+	   ( ,'Ingeniería en Tecnologías de la Información y Comunicaciones', 'TIX');
+	   
+/*ROL*/
+INSERT INTO rol (rol)
+values ('administrador'),
+	   ('maestro'),
+	   ('jefe');
 	   
 /*USUARIOS*/
 INSERT INTO usuario (clave_usuario, titulo, nombre, apellido_paterno, apellido_materno, usuario, contrasena, horas, rol) 

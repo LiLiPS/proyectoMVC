@@ -98,3 +98,13 @@ select grupo.*, usuario.*, materia.pk_materia, materia.fk_carrera as fk_carrera_
 from grupo 
 LEFT JOIN materia ON grupo.fk_materia = materia.pk_materia
 LEFT JOIN usuario ON grupo.fk_usuario = usuario.pk_usuario;
+
+CREATE VIEW view_materias as
+select materia.*, carrera.nombre_carrera
+from materia
+LEFT JOIN carrera ON materia.fk_carrera = carrera.pk_carrera;
+
+CREATE VIEW view_carreras as
+select carrera.*, departamento.*
+from carrera
+LEFT JOIN departamento ON carrera.fk_departamento = departamento.pk_departamento;

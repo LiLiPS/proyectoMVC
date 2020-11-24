@@ -4,7 +4,7 @@ package javabeans;
 public class MateriaBean {
 	// horas_t: teóricas horas_p: prácticas
 	private int pk_materia, fk_carrera, semestre, creditos, horas_t, horas_p;
-	private String clave_materia, nombre;
+	private String clave_materia, nombre, nombre_carrera;
 
 	public int getPk_materia() {
 		return pk_materia;
@@ -68,5 +68,13 @@ public class MateriaBean {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+
+	public String getNombre_carrera() {
+		return nombre_carrera;
+	}
+
+	public void setNombre_carrera(String nombre_carrera) {
+		this.nombre_carrera = nombre_carrera;
 	}
 }

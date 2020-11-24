@@ -3,7 +3,7 @@ package javabeans;
 
 public class CarreraBean {
 	private int pk_carrera, fk_departamento;
-	private String nombre_carrera, abreviatura_carrera;
+	private String nombre_carrera, abreviatura_carrera, departamento;
 
 	public int getPk_carrera() {
 		return pk_carrera;
@@ -35,6 +35,14 @@ public class CarreraBean {
 
 	public void setAbreviatura_carrera(String abreviatura_carrera) {
 		this.abreviatura_carrera = abreviatura_carrera;
+	}
+
+	public String getDepartamento() {
+		return departamento;
+	}
+
+	public void setDepartamento(String departamento) {
+		this.departamento = departamento;
 	}
 
 }
