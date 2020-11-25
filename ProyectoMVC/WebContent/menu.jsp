@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page import="modelo.LoginDAO,javabeans.UsuarioBean"%>
+<%@ page import="modelo.LoginDAO,javabeans.LoginBean, controlador.LoginServlet"%>
     
 <!DOCTYPE html>
 <html>
@@ -20,29 +20,24 @@
 </style>
 </head>
 <%
-	UsuarioBean us = (UsuarioBean)session.getAttribute("usu");
-	String usuario="", titulo="", rol="";
-	int id=0;
-	
-	if(us == null){
+	String rol = "";
+
+	if (session.getAttribute("usu") == null) 
 		out.print("<script>location.replace('login.jsp');</script>");
-	} else{
-	usuario = (String)session.getAttribute("usuario");
-	titulo = (String)session.getAttribute("titulo");
-	rol = (String)session.getAttribute("rol");
-	id = (int)session.getAttribute("id_usuario");
-}%>
+	else 
+		rol = (String) session.getAttribute("rol");
+%>
 <body class="body">
 <header id="menu">
 <ul id="button">
-	<c:if test="${rol == 'jefe' || 'jefe_maestro'}">
+	<c:if test="${rol == 'jefe' || rol == 'jefe_maestro'}">
 	<li><a href="materias.jsp">Lista de materias</a></li>
 	<li><a href="maestros.jsp">Lista de maestros</a></li>
 	<li><a href="sabana.jsp">Sábana</a></li>
 	<li><a href="logout.jsp">Cerrar sesión</a></li>
 	</c:if>
 	<c:if test="${rol == 'maestro' }">
-	<li><a href="reporte.jsp?id=<%=id%>">Reporte de materias</a></li>
+	<li><a href="reporte.jsp?id=<%=session.getAttribute("id_usuario")%>">Reporte de materias</a></li>
 	<li><a href="logout.jsp">Cerrar sesión</a></li>
 	</c:if>
 	<c:if test="${rol == 'administrador' }">
@@ -52,8 +47,8 @@
 </ul>
 </header>
 
-<% out.print("<h3>Bienvenid@ "+titulo +" "+ usuario+" </h3>"); %>
-<c:if test="${rol == 'jefe' || 'jefe_maestro'}">
+<% out.print("<h3>Bienvenid@ "+ session.getAttribute("titulo") +" "+ session.getAttribute("usuario") +" </h3>"); %>
+<c:if test="${rol == 'jefe' || rol =='jefe_maestro'}">
 <h4 style="text-align:center">
 	Para consultar la lista de materias de clic a "Lista de materias" <br>
 	Para consultar el reporte de un maestro de clic a "Lista de maestros" <br>

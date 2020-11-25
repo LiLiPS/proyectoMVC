@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import javabeans.LoginBean;
+import modelo.CarreraDAO;
 import modelo.LoginDAO;
 import modelo.UsuarioDAO;
 
@@ -47,9 +48,14 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("usuario", us.get(0).getNombre());
 			session.setAttribute("rol", us.get(0).getRol());
 			session.setAttribute("id_usuario", us.get(0).getPk_usuario());
-			pagina = "/menu.jsp";
+			
+			if(us.get(0).getRol().equals("jefe") || us.get(0).getRol().equals("jefe_maestro")) {
+				pagina = "/elegirCarrera.jsp";
+				request.setAttribute("carreras", CarreraDAO.getCarreraJefe(us.get(0).getPk_usuario()));
+			}else {
+				pagina = "/menu.jsp";
+			}
 		} else {
-			System.out.print("Lo sentimos, error de usuario o contraseña!");
 			pagina = "/loginError.jsp";
 		}
 

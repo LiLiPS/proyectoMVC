@@ -1,27 +1,33 @@
 USE DATABASE proyectomvc;
 
-
+/*DEPARTAMENTOS*/
+INSERT INTO departamento (departamento)
+values ('Ciencias económico administrativas'),
+	   ('Metal mecánica'),
+	   ('Ingeniería industrial'),
+	   ('Sistemas y computación');
 
 /*CARRERAS*/
 INSERT INTO carrera (fk_departamento, nombre_carrera, abreviatura_carrera)
-values ( ,'Ingeniería en Sistemas Computacionales', 'ISX'),
-	   ( ,'Ingeniería Electrónica', 'ELX'),
-	   ( ,'Ingeniería Electromecánica', 'EMX'),
-	   ( ,'Ingeniería en Gestión Empresarial', 'GE9'),
-	   ( ,'Ingeniería Industrial', 'IIX'),
-	   ( ,'Ingeniería en Logística', 'LOX'),
-	   ( ,'Ingeniería Mecatrónica', 'MCX'),
-	   ( ,'Ingeniería en Tecnologías de la Información y Comunicaciones', 'TIX');
+values (4,'Ingeniería en Sistemas Computacionales', 'ISX'),
+	   (2,'Ingeniería Electrónica', 'ELX'),
+	   (2,'Ingeniería Electromecánica', 'EMX'),
+	   (1,'Ingeniería en Gestión Empresarial', 'GE9'),
+	   (3,'Ingeniería Industrial', 'IIX'),
+	   (3,'Ingeniería en Logística', 'LOX'),
+	   (2,'Ingeniería Mecatrónica', 'MCX'),
+	   (4,'Ingeniería en Tecnologías de la Información y Comunicaciones', 'TIX');
 	   
 /*ROL*/
-INSERT INTO rol (rol)
-values ('administrador'),
-	   ('maestro'),
-	   ('jefe');
+INSERT INTO rol
+values (1, 'administrador'),
+	   (2, 'maestro'),
+	   (3, 'jefe'),
+	   (4, 'jefe_maestro');
 	   
 /*USUARIOS*/
-INSERT INTO usuario (clave_usuario, titulo, nombre, apellido_paterno, apellido_materno, usuario, contrasena, horas, rol) 
-values('U01', 'ING.', 'ANTONIO', 'AGUILA', 'REYES', 'aaguila01', '01123', 5, 'jefe'),
+INSERT INTO usuario (fk_carrera, fk_rol, clave_usuario, titulo, nombre, apellido_paterno, apellido_materno, usuario, contrasena, horas, telefono, correo) 
+values(1, 4, 'U01', 'ING.', 'ANTONIO', 'AGUILA', 'REYES', 'aaguila01', '01123', 5, '4772165196', 'antonio.aguila@leon.tecnm.mx'),
 	  ('U02', 'ING.', 'EFRAIN', 'BERMUDEZ', 'GUADALUPE', 'ebermudez02', '02123', 5, 'maestro'),
 	  ('U03', 'ING.', 'JOSÉ FERNANDO', 'HERNÁNDEZ', 'RODRÍGUEZ', 'jfhernandez03', '03123', 5, 'maestro'),
 	  ('U04', 'ING.', 'MARÍA MINERVA', 'SAUCEDO', 'TORRES ', 'mmsaucedo04', '04123', 5, 'maestro'),
@@ -83,7 +89,7 @@ values('U01', 'ING.', 'ANTONIO', 'AGUILA', 'REYES', 'aaguila01', '01123', 5, 'je
 	  ('U60', 'ING.', 'EDNA MILITZA', 'MARTINEZ', 'PRADO', 'emmartinez60', '60123', 5, 'maestro'),
 	  ('U00', 'ING.', 'JUAN', 'PEREZ', 'LÓPEZ', 'admin', '00123', , 'administrador');
 	  
-/*USUARIOS CARRERA*/
-INSERT INTO usuario_carrera (id_usuario, id_carrera)
+/*JEFES CARRERA*/
+INSERT INTO jefe_carrera (fk_usuario, fk_carrera)
 values (1, 1),
 	   (1, 1)

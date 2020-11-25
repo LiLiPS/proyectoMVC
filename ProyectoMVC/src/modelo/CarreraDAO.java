@@ -34,5 +34,31 @@ public class CarreraDAO {
           
         return lista;  
     }
+	
+	public static List<CarreraBean> getCarreraJefe(int pk){
+		BD bdConexion = new BD();
+		List<CarreraBean> lista = new ArrayList<CarreraBean>();
+		String instruccion = "select carrera.nombre_carrera, carrera.pk_carrera, jefe_carrera.fk_usuario from jefe_carrera "
+				+ "LEFT JOIN carrera ON jefe_carrera.fk_carrera = carrera.pk_carrera "
+				+ "where fk_usuario = ?";
+		
+		try{  
+            Connection con = bdConexion.getConnection();  
+            PreparedStatement ps = con.prepareStatement(instruccion);
+            ps.setInt(1,pk);  
+            ResultSet rs = ps.executeQuery();  
+            while(rs.next()){  
+            	CarreraBean c = new CarreraBean();  
+                c.setPk_carrera(rs.getInt("pk_carrera"));
+                c.setNombre_carrera(rs.getString("nombre_carrera"));
+                lista.add(c);  
+            }  
+            con.close();  
+        }catch(Exception e){
+        	e.printStackTrace();
+        }  
+          
+        return lista;		
+	}
 
 }

@@ -11,6 +11,8 @@ public class LoginDAO {
 		BD bdConexion = new BD();
 		int status = 0;
 		String instruccion = "select pk_usuario from usuario where usuario=? and contrasena=?";
+		System.out.println(name);
+		System.out.println(pass);
 		
 		try {
 			Connection con = bdConexion.getConnection();

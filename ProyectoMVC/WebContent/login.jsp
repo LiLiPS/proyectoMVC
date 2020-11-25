@@ -16,7 +16,7 @@
 		<div><h1>LOGIN</h1></div>
 	</div>
 	
-	<form action="compruebaUsuario.jsp" method="post">
+	<form action="LoginServlet" method="post">
 		<div class="login">
 			<table>
 				<tr>
