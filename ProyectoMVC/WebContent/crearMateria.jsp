@@ -19,24 +19,22 @@
 		usuario = session.getAttribute("usuario").toString();
 		rol = session.getAttribute("rol").toString();
 
-		if (rol.equals("maestro")) {
+		if (rol.equals("maestro")|| rol.equals("administrador"))
 			out.print("<script>location.replace('menu.jsp');</script>");
-		}
-
-	} else {
+	} else 
 		out.print("<script>location.replace('login.jsp');</script>");
-	}
+
 %>
 <header id="menu">
 	<ul id="button">
 		<li><a href="materias.jsp">Regresar</a></li>
 		<li><a href="menu.jsp">Regresar a menú</a></li>
-		<li><a href="logout.jsp">Cerrar sesión</a></li>
+		<li><a href="LogoutServlet">Cerrar sesión</a></li>
 	</ul>
 </header>
 <h1 style="text-align: center">Añadir una materia</h1>
 	<div id="contenedor">
-	<form action="nuevaMateria.jsp" method="post">
+	<form action="NuevaMateriaServlet" method="post">
 		<div id="formulario">
 			<table>
 				<tr>
@@ -48,12 +46,8 @@
 					<td><input type="text" name="nombre" id="nombre"></td>
 				</tr>
 				<tr>
-					<td><label for="abreviaturaCarrera">Abreviatura de Carrera: </label></td>
-					<td><input type="text" name="abreviaturaCarrera" id="abreviaturaCarrera" placeholder="Ej. ISX"></td>
-				</tr>
-				<tr>
 					<td><label for="carrera">Carrera: </label></td>
-					<td><input type="text" name="carrera" id="carrera"></td>
+					<td><input type="text" name="carrera" id="carrera" ></td>
 				</tr>
 				<tr>
 					<td><label for="semestre">Semestre: </label></td>

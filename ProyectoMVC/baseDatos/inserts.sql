@@ -92,4 +92,10 @@ values(1, 4, 'U01', 'ING.', 'ANTONIO', 'AGUILA', 'REYES', 'aaguila01', '01123', 
 /*JEFES CARRERA*/
 INSERT INTO jefe_carrera (fk_usuario, fk_carrera)
 values (1, 1),
-	   (1, 1)
+	   (1, 2);
+
+/*MATERIAS*/
+INSERT INTO materia (fk_carrera, clave_materia, nombre, semestre, horas_t, horas_p, creditos)
+values (1, 'AEF1041', 'MATEMÁTICAS DISCRETAS', 1, 3, 2, 5),
+	   (1, 'AED1285', 'FUNDAMENTOS DE PROGRAMACIÓN', 1, 2, 3, 5),
+	   (3, 'EMH1016', 'INTRODUCCIÓN A LA PROGRAMACIÓN', 1, 2, 2, 4);

@@ -31,18 +31,18 @@
 <header id="menu">
 <ul id="button">
 	<c:if test="${rol == 'jefe' || rol == 'jefe_maestro'}">
-	<li><a href="materias.jsp">Lista de materias</a></li>
-	<li><a href="maestros.jsp">Lista de maestros</a></li>
-	<li><a href="sabana.jsp">Sábana</a></li>
-	<li><a href="logout.jsp">Cerrar sesión</a></li>
+	<li><a href="MateriasServlet?id=${id_carrera}">Lista de materias</a></li>
+	<li><a href="MaestrosServlet?id=${id_carrera}">Lista de maestros</a></li>
+	<li><a href="sabana.jsp?id=${id_carrera}">Sábana</a></li>
+	<li><a href="LogoutServlet">Cerrar sesión</a></li>
 	</c:if>
 	<c:if test="${rol == 'maestro' }">
 	<li><a href="reporte.jsp?id=<%=session.getAttribute("id_usuario")%>">Reporte de materias</a></li>
-	<li><a href="logout.jsp">Cerrar sesión</a></li>
+	<li><a href="LogoutServlet">Cerrar sesión</a></li>
 	</c:if>
 	<c:if test="${rol == 'administrador' }">
 	<li><a href="carreras.jsp">Lista de carreras</a></li>
-	<li><a href="logout.jsp">Cerrar sesión</a></li>
+	<li><a href="LogoutServlet">Cerrar sesión</a></li>
 	</c:if>
 </ul>
 </header>
