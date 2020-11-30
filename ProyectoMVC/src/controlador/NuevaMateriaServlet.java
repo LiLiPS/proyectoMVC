@@ -42,7 +42,32 @@ public class NuevaMateriaServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String rol, pagina;
 		HttpSession session = request.getSession(false);
+		
+		/*
+		 * ps.setInt(1, m.getFk_carrera());
+            ps.setString(2, m.getClave_materia());  
+            ps.setString(3, m.getNombre()); 
+            ps.setInt(4, m.getSemestre());
+            ps.setInt(5, m.getHoras_t());
+            ps.setInt(6, m.getHoras_p());
+            ps.setInt(7, m.getCreditos());*/
+		
+		int fk_carrera = Integer.parseInt(request.getParameter("carrera"));
+		String clave = request.getParameter("clave_materia");
+		String nombre = request.getParameter("nombre");
+		int semestre = Integer.parseInt(request.getParameter("semestre"));
+		int horas_t = Integer.parseInt(request.getParameter("horas_t"));
+		int horas_p = Integer.parseInt(request.getParameter("horas_p"));
+		int creditos = Integer.parseInt(request.getParameter("creditos"));
+
 		MateriaBean materia = new MateriaBean();
+		materia.setFk_carrera(fk_carrera);
+		materia.setClave_materia(clave);
+		materia.setNombre(nombre);
+		materia.setSemestre(semestre);
+		materia.setHoras_t(horas_t);
+		materia.setHoras_p(horas_p);
+		materia.setCreditos(creditos);
 
 		if (session.getAttribute("usuario") != null && session.getAttribute("rol") != null) {
 			rol = session.getAttribute("rol").toString();
@@ -54,7 +79,7 @@ public class NuevaMateriaServlet extends HttpServlet {
 				int i = MateriaDAO.guardarMateria(materia);  
 				if(i>0){  
 					//response.sendRedirect("materias.jsp");  
-					pagina = "/materias.jsp";
+					pagina = "MateriasServlet";
 				}else{  
 					//response.sendRedirect("crearMateria.jsp"); 
 					pagina = "/crearMateria.jsp";

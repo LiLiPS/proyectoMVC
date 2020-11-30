@@ -60,5 +60,29 @@ public class CarreraDAO {
           
         return lista;		
 	}
+	
+	public static CarreraBean getCarrerabyID(int id){
+		BD bdConexion = new BD();
+		CarreraBean c = new CarreraBean();  
+        String instruccion = "select * from view_carreras where pk_carrera=?";
+          
+        try{  
+            Connection con = bdConexion.getConnection();  
+            PreparedStatement ps = con.prepareStatement(instruccion);  
+            ps.setInt(1,id);  
+            ResultSet rs = ps.executeQuery();  
+            if(rs.next()){ 
+            	c.setPk_carrera(rs.getInt("pk_materia"));
+                c.setFk_departamento(rs.getInt("fk_departamento"));
+                c.setNombre_carrera(rs.getString("nombre_carrera"));
+                c.setAbreviatura_carrera(rs.getString("abreviatura_carrera"));
+            }  
+            con.close();  
+        }catch(Exception ex){
+        	ex.printStackTrace();
+        }  
+          
+        return c;  
+    } 
 
 }

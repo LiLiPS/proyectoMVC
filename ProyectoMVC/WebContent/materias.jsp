@@ -38,7 +38,7 @@ if (session.getAttribute("usuario") != null && session.getAttribute("rol") != nu
 			<input type='text' placeholder='Clave de materia' name='claveM'>
 			<input type='submit' name='buscar' value='Buscar'> 
 			<input type='hidden' name='sts' value='buscar'>
-			<input type='hidden' name='id_c' value='${id_c}'>
+			<input type='hidden' name='id_c' value='${pk_carrera}'>
 		</form>
 		<br>
 

@@ -14,10 +14,12 @@
 <%
 	String usuario;
 	String rol;
+	int id_c=0;
 
 	if (session.getAttribute("usuario") != null && session.getAttribute("rol") != null) {
 		usuario = session.getAttribute("usuario").toString();
 		rol = session.getAttribute("rol").toString();
+		id_c = Integer.parseInt(session.getAttribute("pk_carrera").toString());
 
 		if (rol.equals("maestro")|| rol.equals("administrador"))
 			out.print("<script>location.replace('menu.jsp');</script>");
@@ -27,7 +29,7 @@
 %>
 <header id="menu">
 	<ul id="button">
-		<li><a href="materias.jsp">Regresar</a></li>
+		<li><a href="MateriasServlet">Regresar</a></li>
 		<li><a href="menu.jsp">Regresar a menú</a></li>
 		<li><a href="LogoutServlet">Cerrar sesión</a></li>
 	</ul>
@@ -38,16 +40,15 @@
 		<div id="formulario">
 			<table>
 				<tr>
+					<td><input type="text" name="carrera" id="carrera" value="<%=id_c%>" hidden=""></td>
+				</tr>
+				<tr>
 					<td><label for="clave_materia">Clave materia: </label></td>
 					<td><input type="text" name="clave_materia" id="clave_materia"></td>
 				</tr>
 				<tr>
 					<td><label for="nombre">Nombre: </label></td>
 					<td><input type="text" name="nombre" id="nombre"></td>
-				</tr>
-				<tr>
-					<td><label for="carrera">Carrera: </label></td>
-					<td><input type="text" name="carrera" id="carrera" ></td>
 				</tr>
 				<tr>
 					<td><label for="semestre">Semestre: </label></td>

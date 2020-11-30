@@ -24,14 +24,18 @@
 
 	if (session.getAttribute("usu") == null) 
 		out.print("<script>location.replace('login.jsp');</script>");
-	else 
+	else {
 		rol = (String) session.getAttribute("rol");
+	}
+		
+		
 %>
 <body class="body">
 <header id="menu">
 <ul id="button">
 	<c:if test="${rol == 'jefe' || rol == 'jefe_maestro'}">
-	<li><a href="MateriasServlet?id=${id_carrera}">Lista de materias</a></li>
+	<!-- <li><a href="LoginServlet">Cambiar de carrera</a></li> -->
+	<li><a href="MateriasServlet">Lista de materias</a></li>
 	<li><a href="MaestrosServlet?id=${id_carrera}">Lista de maestros</a></li>
 	<li><a href="sabana.jsp?id=${id_carrera}">Sábana</a></li>
 	<li><a href="LogoutServlet">Cerrar sesión</a></li>
@@ -51,6 +55,7 @@
 <c:if test="${rol == 'jefe' || rol =='jefe_maestro'}">
 <h4 style="text-align:center">
 	Para consultar la lista de materias de clic a "Lista de materias" <br>
+	Para crear un horario da clic en "Crear horario" <br>
 	Para consultar el reporte de un maestro de clic a "Lista de maestros" <br>
 	Para consultar la lista de materias con sus horarios de clic a "Sabana"
 	

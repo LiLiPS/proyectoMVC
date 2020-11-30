@@ -34,7 +34,7 @@ public class EliminarMateriaServlet extends HttpServlet {
 		
 		//int h = HorarioDAO.borrarHorario(id);
 		MateriaDAO.borrarMateria(id);  
-		response.sendRedirect("materias.jsp");
+		response.sendRedirect("MateriasServlet");
 	}
 
 	/**
