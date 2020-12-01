@@ -16,9 +16,9 @@ if (session.getAttribute("usuario") != null && session.getAttribute("rol") != nu
 
 	if (rol.equals("maestro") || rol.equals("administrador")) 
 		out.print("<script>location.replace('menu.jsp');</script>");
-} else {
+} else 
 	out.print("<script>location.replace('login.jsp');</script>");
-}
+
 %>
 <body class="body">
 	
@@ -45,13 +45,13 @@ if (session.getAttribute("usuario") != null && session.getAttribute("rol") != nu
 		<table border=1>
 			<tr class="cabecera">
 				<th>No.</th>
-				<th>Carrera</th>
 				<th>Clave materia</th>
 				<th>Nombre</th>
 				<th>Semestre</th>
 				<th>Horas teóricas</th>
 				<th>Horas prácticas</th>
 				<th>Créditos</th>
+				<th>Carrera</th>
 				<th>Editar</th>
 				<th>Borrar</th>
 			</tr>
@@ -60,17 +60,17 @@ if (session.getAttribute("usuario") != null && session.getAttribute("rol") != nu
 					<th colspan=11>No se encontraron materias</th>
 				</tr>
 			</c:if>
-			<c:forEach items="${list}" var="m">
+			<c:forEach items="${list}" var="m" varStatus="contador">
 				<tr>
-					<td>${m.getPk_materia()}</td>
-					<td>${m.getNombre_carrera()}</td>
+					<td>${contador.index+1}</td>
 					<td>${m.getClave_materia()}</td>
 					<td>${m.getNombre()}</td>					
 					<td>${m.getSemestre()}</td>
 					<td>${m.getHoras_t()}</td>
 					<td>${m.getHoras_p()}</td>
 					<td>${m.getCreditos()}</td>
-					<td><a href="editarMateria.jsp?id=${m.getPk_materia()}">Editar</a></td>
+					<td>${m.getNombre_carrera()}</td>
+					<td><a href="CargarMateriaServlet?id=${m.getPk_materia()}">Editar</a></td>
 					<td><a href="EliminarMateriaServlet?id=${m.getPk_materia()}">Borrar</a></td>
 				</tr>
 			</c:forEach>

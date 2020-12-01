@@ -28,8 +28,8 @@ values (1, 'administrador'),
 /*USUARIOS*/
 INSERT INTO usuario (fk_carrera, fk_rol, clave_usuario, titulo, nombre, apellido_paterno, apellido_materno, usuario, contrasena, horas, telefono, correo) 
 values(1, 4, 'U01', 'ING.', 'ANTONIO', 'AGUILA', 'REYES', 'aaguila01', '01123', 5, '4772165196', 'antonio.aguila@leon.tecnm.mx'),
-	  ('U02', 'ING.', 'EFRAIN', 'BERMUDEZ', 'GUADALUPE', 'ebermudez02', '02123', 5, 'maestro'),
-	  ('U03', 'ING.', 'JOSÉ FERNANDO', 'HERNÁNDEZ', 'RODRÍGUEZ', 'jfhernandez03', '03123', 5, 'maestro'),
+	  (1, 2, 'U02', 'ING.', 'EFRAIN', 'BERMUDEZ', 'GUADALUPE', 'ebermudez02', '02123', 5, '4773829292', 'efrain.bermudez@leon.tecnm.mx'),
+	  (1, 2, 'U03', 'ING.', 'JOSÉ FERNANDO', 'HERNÁNDEZ', 'RODRÍGUEZ', 'jfhernandez03', '03123', 5, '4773829287', 'josef.hernandez@leon.tecnm.mx'),
 	  ('U04', 'ING.', 'MARÍA MINERVA', 'SAUCEDO', 'TORRES ', 'mmsaucedo04', '04123', 5, 'maestro'),
 	  ('U05', 'ING.', 'JOSE GERARDO', 'CARPIO', 'FLORES', 'jgcarpio05', '05123', 5, 'maestro'),
 	  ('U06', 'ING.', 'LUIS EDUARDO', 'GUTIERREZ', 'AYALA', 'legutierrez06', '06123', 5, 'maestro'),

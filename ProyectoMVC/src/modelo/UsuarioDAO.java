@@ -92,5 +92,44 @@ public class UsuarioDAO {
 		
 		return lista;
 	}
+	
+	public static List<LoginBean> usuariosbyCarrera(int id_carrera) {
+		BD bdConexion = new BD();
+		List<LoginBean> lista = new ArrayList<LoginBean>();
+		
+		String instruccion = "select * from view_usuarios where pk_carrera = ?";
+		
+		try {
+			Connection con = bdConexion.getConnection();
+			PreparedStatement ps = con.prepareStatement(instruccion);
+			ps.setInt(1, id_carrera);		
+
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()){ 
+				LoginBean lb = new LoginBean();
+				lb.setPk_usuario(rs.getInt("pk_usuario"));
+				lb.setTitulo(rs.getString("titulo"));
+				lb.setNombre(rs.getString("nombre"));
+				lb.setApellido_paterno(rs.getString("apellido_paterno"));
+				lb.setApellido_materno(rs.getString("apellido_materno"));
+				lb.setTelefono(rs.getString("telefono"));
+				lb.setCorreo(rs.getString("correo"));
+				lb.setPk_rol(rs.getInt("pk_rol"));
+				lb.setRol(rs.getString("rol"));
+				lb.setPk_carrera(rs.getInt("pk_carrera"));
+				lb.setNombre_carrera(rs.getString("nombre_carrera"));
+				lb.setDepartamento(rs.getString("departamento"));
+				lb.setClave_usuario(rs.getString("clave_usuario"));
+				lb.setHoras(rs.getInt("Horas"));
+				lista.add(lb); 
+			}
+			
+			con.close(); 
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return lista;
+	}
 
 }
