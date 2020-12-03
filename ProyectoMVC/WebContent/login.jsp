@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Administración de materias</title>
-<link rel="stylesheet" href="estilos/estiloLogin.css">
+<link rel="stylesheet" href="css/estiloLogin.css">
 
 </head>
 <body>

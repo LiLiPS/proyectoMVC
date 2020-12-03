@@ -10,15 +10,13 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" 
-    integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link href="css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.min.js"></script>
 	<link rel="stylesheet" href="estilos/tablas.css">
 	<link rel="stylesheet" href="estilos/estilos.css">
 	
-	<title>Lista de materias</title>
+	<title>Sábana de horarios</title>
 </head>
 <body class="body">
 	<%
@@ -56,25 +54,32 @@
 	
 <div class="container">
 	<br>
-	<h2 class="text-center">Maestros</h2>
+	<h2 class="text-center">Sábana de horarios</h2>
 	<br><br>
 	<div class="row">
 		<div class="col col-lg-5">
 			<form action='MaestrosServlet' method='post'>
 				<div class="row">
-					<div class="col col-lg-">
+					<div class="col">
 						<div class="form-group">
-						 <input type='text' placeholder='Clave de maestro' name='claveM' class="form-control">
+							<input type='text' placeholder='Clave horario' name='claveH'
+								class="form-control">
 						</div>
 					</div>
 					<div class="col">
 						<div class="form-group">
-							<input type='submit' name='buscar' value='Buscar' class="btn btn-sm btn-primary btn-outline-primary"> 
-							<input	type='hidden' name='sts' value='buscar'>
+							<input type='submit' name='buscar' value='Buscar horario'
+								class="btn btn-sm btn-primary btn-outline-primary"> <input
+								type='hidden' name='sts' value='buscar'>
 						</div>
 					</div>
 				</div>
 			</form>
+		</div>
+		<div class="col col-lg-6"></div>
+		<div class="col col-lg-1">
+			<a class="btn btn-success btn-outline-success" href="form.php">
+				Crear horario </a>
 		</div>
 	</div>
 	<br><br>
@@ -82,33 +87,50 @@
 	<table class="table table-hover table-bordered table-striped" border=1>
 	<thead>
 	<tr class="cabecera text-center">
-	<th scope="col">No.</th>
-	<th scope="col">Clave maestro</th>
-	<th scope="col">Título</th>
-	<th scope="col">Nombre</th>
-	<th scope="col">Apellido paterno</th>
-	<th scope="col">Apellido materno</th>
-	<th scope="col">Opciones</th>
+	<th scope="col">Clave horario</th>	
+	<th scope="col">Clave de materia</th>
+	<th scope="col">Clave de carrera</th>
+	<th scope="col">Nombre de Materia</th>
+	<th scope="col">Carrera</th>
+	<th scope="col">Maestro</th>
+	<th scope="col">Periodo</th>
+	<th scope="col">Turno</th>
+	<th scope="col">Grupo</th>
+	<th scope="col">No. Alumnos</th>
+	<th scope="col">Semestre</th>
+	<th scope="col">Créditos</th>
+	<th scope="col">Aula</th>
+	<th scope="col">Operaciones</th>
 	</tr>
 	</thead>
 	<tbody>
 	<c:if test="list.isEmpty()">
 		<tr><th colspan=11>No se encontraron maestros</th></tr>
 	</c:if>
-	<c:forEach items="${list}" var="us" varStatus="contador">
+	<c:forEach items="${sabana}" var="s">
 			<tr class="text-center">
-				<td scope="row">${contador.index+1}</td>
-				<td>${us.getClave_usuario()}</td>
-				<td>${us.getTitulo()}</td>
-				<td>${us.getNombre()}</td>
-				<td>${us.getApellido_paterno()}</td>
-				<td>${us.getApellido_materno()}</td>			
+				<td>${s.getClave_horario()}</td>
+				<td>${s.getClave_materia()}</td>
+				<td>${s.getClave_carrera()}</td>
+				<td>${s.getMateria()}</td>
+				<td>${s.getCarrera()}</td>
+				<td>${s.getNombreMaestro()}</td>
+				<td>${s.getPeriodo()}</td>
+				<td>${s.getTurno()}</td>
+				<td>${s.getGrupo()}</td>
+				<td>${s.getAlumnos()}</td>
+				<td>${s.getSemestre()}</td>
+				<td>${s.getCreditos()}</td>
+				<td>${s.getAula()}</td>				
 				<td>
 					<a class="btn btn-sm btn-info" href="reporte.jsp?id=${us.getPk_usuario()}">
-						<i class="fas fa-list-ul"></i> Reporte
+						<i class="fas fa-list-ul"></i> Detalles
 					</a>
 					<a class="btn btn-sm btn-primary" href="CargarMaestroServlet?id=${us.getPk_usuario()}">
-						<i class="fas fa-id-card"></i> Perfil
+						<i class="fas fa-id-card"></i> Editar
+					</a>
+					<a class="btn btn-sm btn-primary" href="CargarMaestroServlet?id=${us.getPk_usuario()}">
+						<i class="fas fa-id-card"></i> Eliminar
 					</a>
 				</td>
 			</tr>

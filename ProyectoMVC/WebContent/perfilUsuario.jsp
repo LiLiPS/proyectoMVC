@@ -1,6 +1,7 @@
 <!-- Parada Sánchez Liliana -->
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 <html>
@@ -18,16 +19,22 @@
 		usuario = session.getAttribute("usuario").toString();
 		rol = session.getAttribute("rol").toString();
 		
-		if (rol.equals("maestro")|| rol.equals("administrador"))
+		if (rol.equals("administrador"))
 			out.print("<script>location.replace('menu.jsp');</script>");
 	} else 
 		out.print("<script>location.replace('login.jsp');</script>");
 %>
 <header id="menu">
 	<ul id="button">
-		<li><a href="MaestrosServlet">Regresar</a></li>
-		<li><a href="menu.jsp">Regresar a menú</a></li>
-		<li><a href="LogoutServlet">Cerrar sesión</a></li>
+		<c:if test="${rol == 'jefe' || rol == 'jefe_maestro'}">
+			<li><a href="MaestrosServlet">Regresar</a></li>
+			<li><a href="menu.jsp">Regresar a menú</a></li>
+			<li><a href="LogoutServlet">Cerrar sesión</a></li>
+		</c:if>
+		<c:if test="${rol == 'maestro' }">
+			<li><a href="menu.jsp">Regresar a menú</a></li>
+			<li><a href="LogoutServlet">Cerrar sesión</a></li>
+		</c:if>
 	</ul>
 </header>
 <h1 style="text-align: center">Datos del maestro</h1>
@@ -54,10 +61,10 @@
 					<td><label>Correo electrónico: </label></td>
 					<td><label>${maestro.get(0).getCorreo()}</label></td>
 				</tr>
-				<!--  <tr>
-					<td><label for="creditos">Departamento: </label></td>
-					<td><label>${maestro.get(0).getNombre()}</label></td>
-				</tr>-->
+				<tr>
+					<td><label>Departamento: </label></td>
+					<td><label>${maestro.get(0).getDepartamento()}</label></td>
+				</tr>
 			</table>
 		</div>
 </div>

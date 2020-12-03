@@ -2,6 +2,7 @@
 package controlador;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -12,40 +13,41 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import javabeans.LoginBean;
-import modelo.UsuarioDAO;
+import javabeans.Jefe_CarreraBean;
+import modelo.JefeDAO;
 
-@WebServlet("/CargarMaestroServlet")
-public class CargarMaestroServlet extends HttpServlet {
+@WebServlet("/JefesServlet")
+public class JefesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    public CargarMaestroServlet() {
+	List<Jefe_CarreraBean> list = new ArrayList<Jefe_CarreraBean>();
+	String rol, pagina;
+	HttpSession session;
+
+    public JefesServlet() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String rol, pagina;
-		HttpSession session = request.getSession(false);			
+session = request.getSession(false);
 		
 		if (session.getAttribute("usuario") != null && session.getAttribute("rol") != null) {
 			rol = session.getAttribute("rol").toString();
-			System.out.print(rol);
-			if (rol.equals("administrador")) {
+
+			if (rol.equals("maestro") || rol.equals("jefe") || rol.equals("jefe_maestro")) {
 				pagina = "/menu.jsp";
 			}else {
-				pagina = "/perfilUsuario.jsp";
-				String sid = request.getParameter("id");	
-				List<LoginBean> m = UsuarioDAO.rolUsuario(Integer.parseInt(sid));
-				request.setAttribute("maestro", m);
+				pagina = "/jefes.jsp";
+				list = JefeDAO.getJefes();
 			}
-		} else {
+
+		} else 
 			pagina = "/login.jsp";
-		}
-		
+				
+		request.setAttribute("list",list);
 		RequestDispatcher dispatcher = request.getRequestDispatcher(pagina);
 		dispatcher.forward(request, response);
 	}
-
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}

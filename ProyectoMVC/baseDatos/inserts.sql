@@ -30,6 +30,7 @@ INSERT INTO usuario (fk_carrera, fk_rol, clave_usuario, titulo, nombre, apellido
 values(1, 4, 'U01', 'ING.', 'ANTONIO', 'AGUILA', 'REYES', 'aaguila01', '01123', 5, '4772165196', 'antonio.aguila@leon.tecnm.mx'),
 	  (1, 2, 'U02', 'ING.', 'EFRAIN', 'BERMUDEZ', 'GUADALUPE', 'ebermudez02', '02123', 5, '4773829292', 'efrain.bermudez@leon.tecnm.mx'),
 	  (1, 2, 'U03', 'ING.', 'JOSÉ FERNANDO', 'HERNÁNDEZ', 'RODRÍGUEZ', 'jfhernandez03', '03123', 5, '4773829287', 'josef.hernandez@leon.tecnm.mx'),
+	  (1, 1, 'U04', 'ING.', 'LILIANA', 'PARADA', 'SÁNCHEZ', 'admin04', '04123', 5, '4773928296', 'lili.parada@leon.tecnm.mx'),	  
 	  ('U04', 'ING.', 'MARÍA MINERVA', 'SAUCEDO', 'TORRES ', 'mmsaucedo04', '04123', 5, 'maestro'),
 	  ('U05', 'ING.', 'JOSE GERARDO', 'CARPIO', 'FLORES', 'jgcarpio05', '05123', 5, 'maestro'),
 	  ('U06', 'ING.', 'LUIS EDUARDO', 'GUTIERREZ', 'AYALA', 'legutierrez06', '06123', 5, 'maestro'),
@@ -99,3 +100,31 @@ INSERT INTO materia (fk_carrera, clave_materia, nombre, semestre, horas_t, horas
 values (1, 'AEF1041', 'MATEMÁTICAS DISCRETAS', 1, 3, 2, 5),
 	   (1, 'AED1285', 'FUNDAMENTOS DE PROGRAMACIÓN', 1, 2, 3, 5),
 	   (3, 'EMH1016', 'INTRODUCCIÓN A LA PROGRAMACIÓN', 1, 2, 2, 4);
+	   
+/*HORAS*/
+INSERT INTO hora
+values (1, '07:00-08:40'),
+	   (2, '07:00-07:50'),
+	   (3, '07:50-08:40'),
+	   (4, '08:45-10:25'),
+	   (5, '08:45-09:35'),
+	   (6, '09:35-10:25'),
+	   (7, '10:30-12:10'),
+	   (8, '10:30-11:20'),
+	   (9, '11:20-12:10'),
+	   (10, '12:15-13:55'),
+	   (11, '12:15-13:05'),
+	   (12, '13:05-13:55');
+
+/*GRUPOS*/
+/*2, 1,'4007','G01','A','D1','','08:45-10:25','','08:45-10:25','09:35-10:25','Agosto-Diciembre/2020','Matutino',34*/
+INSERT INTO grupo (fk_usuario, fk_materia, clave_grupo,grupo,aula,periodo,turno,alumnos)
+values(1, 1,'4007','G01','A','D1','Agosto-Diciembre/2020','Matutino',34);
+
+/*HORARIOS*/
+INSERT INTO horario (fk_grupo, fk_hora, dia)
+values(1, 4, 'Martes'),
+	  (1, 4, 'Jueves'),
+	  (1, 6, 'Viernes');
+
+	   

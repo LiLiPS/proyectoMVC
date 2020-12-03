@@ -83,6 +83,31 @@ public class CarreraDAO {
         }  
           
         return c;  
-    } 
+    }
+	
+	public static List<CarreraBean> getCarrerasbyNombre(String nombre){ 
+		BD bdConexion = new BD();
+        List<CarreraBean> lista = new ArrayList<CarreraBean>(); 
+        String instruccion = "select * from view_carreras where nombre_carrera LIKE ?";
+          
+        try{  
+            Connection con = bdConexion.getConnection();  
+            PreparedStatement ps = con.prepareStatement(instruccion);  
+            ps.setString(1,"%" + nombre + "%");  
+            ResultSet rs = ps.executeQuery(); 
+            while(rs.next()){  
+            	CarreraBean c = new CarreraBean();  
+                c.setPk_carrera(rs.getInt("pk_carrera"));
+                c.setFk_departamento(rs.getInt("fk_departamento"));
+                c.setNombre_carrera(rs.getString("nombre_carrera"));
+                c.setAbreviatura_carrera(rs.getString("abreviatura_carrera"));
+                c.setDepartamento(rs.getString("departamento"));  
+                lista.add(c);  
+            }  
+            con.close();  
+        }catch(Exception e){e.printStackTrace();}  
+          
+        return lista;  
+    }
 
 }

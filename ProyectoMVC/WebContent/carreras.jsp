@@ -18,7 +18,7 @@
 	<link rel="stylesheet" href="estilos/tablas.css">
 	<link rel="stylesheet" href="estilos/estilos.css">
 	
-	<title>Lista de materias</title>
+	<title>Lista de carreras</title>
 </head>
 <body class="body">
 	<%
@@ -29,7 +29,7 @@
 		usuario = session.getAttribute("usuario").toString(); 
 		rol = session.getAttribute("rol").toString();
 		
-		if(rol.equals("maestro") || rol.equals("administrador"))
+		if(rol.equals("maestro") || rol.equals("jefe") || rol.equals("jefe_maestro"))
 			out.print("<script>location.replace('menu.jsp');</script>");		
 	}else
 		out.print("<script>location.replace('login.jsp');</script>");
@@ -56,59 +56,62 @@
 	
 <div class="container">
 	<br>
-	<h2 class="text-center">Maestros</h2>
+	<h2 class="text-center">Carreras</h2>
 	<br><br>
 	<div class="row">
 		<div class="col col-lg-5">
-			<form action='MaestrosServlet' method='post'>
+			<form action='ListaCarrerasServlet' method='post'>
 				<div class="row">
-					<div class="col col-lg-">
+					<div class="col">
 						<div class="form-group">
-						 <input type='text' placeholder='Clave de maestro' name='claveM' class="form-control">
+							<input type='text' placeholder='Nombre carrera' name='claveC'
+								class="form-control">
 						</div>
 					</div>
 					<div class="col">
 						<div class="form-group">
-							<input type='submit' name='buscar' value='Buscar' class="btn btn-sm btn-primary btn-outline-primary"> 
-							<input	type='hidden' name='sts' value='buscar'>
+							<input type='submit' name='buscar' value='Buscar carrera'
+								class="btn btn-sm btn-primary btn-outline-primary"> <input
+								type='hidden' name='sts' value='buscar'>
 						</div>
 					</div>
 				</div>
 			</form>
 		</div>
+		<div class="col col-lg-5"></div>
+		<div class="col col-lg-1">
+			<a class="btn btn-success btn-outline-success" href="NuevaCarreraServlet">
+				Crear carrera </a>
+		</div>
 	</div>
-	<br><br>
-	
+	<br>
+		
 	<table class="table table-hover table-bordered table-striped" border=1>
 	<thead>
 	<tr class="cabecera text-center">
 	<th scope="col">No.</th>
-	<th scope="col">Clave maestro</th>
-	<th scope="col">Título</th>
-	<th scope="col">Nombre</th>
-	<th scope="col">Apellido paterno</th>
-	<th scope="col">Apellido materno</th>
+	<th scope="col">Abreviatura</th>
+	<th scope="col">Nombre Carrera</th>
+	<th scope="col">Departamento</th>
 	<th scope="col">Opciones</th>
 	</tr>
 	</thead>
 	<tbody>
-	<c:if test="list.isEmpty()">
-		<tr><th colspan=11>No se encontraron maestros</th></tr>
+	<c:if test="${list.isEmpty()}">
+		<tr><th colspan=5 class="text-center">No se encontraron carreras</th></tr>
 	</c:if>
-	<c:forEach items="${list}" var="us" varStatus="contador">
+	<c:forEach items="${list}" var="ca" varStatus="contador">
 			<tr class="text-center">
 				<td scope="row">${contador.index+1}</td>
-				<td>${us.getClave_usuario()}</td>
-				<td>${us.getTitulo()}</td>
-				<td>${us.getNombre()}</td>
-				<td>${us.getApellido_paterno()}</td>
-				<td>${us.getApellido_materno()}</td>			
+				<td>${ca.getAbreviatura_carrera()}</td>
+				<td>${ca.getNombre_carrera()}</td>
+				<td>${ca.getDepartamento()}</td>		
 				<td>
-					<a class="btn btn-sm btn-info" href="reporte.jsp?id=${us.getPk_usuario()}">
-						<i class="fas fa-list-ul"></i> Reporte
+					<a class="btn btn-sm btn-warning" href="reporte.jsp?id=${ca.getPk_carrera()}">
+						<i class="fas fa-edit"></i> Editar
 					</a>
-					<a class="btn btn-sm btn-primary" href="CargarMaestroServlet?id=${us.getPk_usuario()}">
-						<i class="fas fa-id-card"></i> Perfil
+					<a class="btn btn-sm btn-danger" href="CargarMaestroServlet?id=${ca.getPk_carrera()}">
+						<i class="fas fa-trash"></i> Borrar
 					</a>
 				</td>
 			</tr>

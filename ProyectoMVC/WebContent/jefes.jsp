@@ -18,7 +18,7 @@
 	<link rel="stylesheet" href="estilos/tablas.css">
 	<link rel="stylesheet" href="estilos/estilos.css">
 	
-	<title>Lista de materias</title>
+	<title>Lista de jefes de carrera</title>
 </head>
 <body class="body">
 	<%
@@ -29,7 +29,7 @@
 		usuario = session.getAttribute("usuario").toString(); 
 		rol = session.getAttribute("rol").toString();
 		
-		if(rol.equals("maestro") || rol.equals("administrador"))
+		if(rol.equals("maestro") || rol.equals("jefe") || rol.equals("jefe_maestro"))
 			out.print("<script>location.replace('menu.jsp');</script>");		
 	}else
 		out.print("<script>location.replace('login.jsp');</script>");
@@ -56,59 +56,40 @@
 	
 <div class="container">
 	<br>
-	<h2 class="text-center">Maestros</h2>
+	<h2 class="text-center">Jefes de carrera</h2>
 	<br><br>
 	<div class="row">
 		<div class="col col-lg-5">
-			<form action='MaestrosServlet' method='post'>
-				<div class="row">
-					<div class="col col-lg-">
-						<div class="form-group">
-						 <input type='text' placeholder='Clave de maestro' name='claveM' class="form-control">
-						</div>
-					</div>
-					<div class="col">
-						<div class="form-group">
-							<input type='submit' name='buscar' value='Buscar' class="btn btn-sm btn-primary btn-outline-primary"> 
-							<input	type='hidden' name='sts' value='buscar'>
-						</div>
-					</div>
-				</div>
-			</form>
+		</div>
+		<div class="col col-lg-4"></div>
+		<div class="col col-lg-1">
+			<a class="btn btn-success btn-outline-success" href="form.php">
+				Asignar jefe de carrera </a>
 		</div>
 	</div>
-	<br><br>
+	<br>
 	
 	<table class="table table-hover table-bordered table-striped" border=1>
 	<thead>
 	<tr class="cabecera text-center">
 	<th scope="col">No.</th>
-	<th scope="col">Clave maestro</th>
-	<th scope="col">Título</th>
-	<th scope="col">Nombre</th>
-	<th scope="col">Apellido paterno</th>
-	<th scope="col">Apellido materno</th>
+	<th scope="col">Nombre maestro</th>
+	<th scope="col">Nombre Carrera</th>
 	<th scope="col">Opciones</th>
 	</tr>
 	</thead>
 	<tbody>
-	<c:if test="list.isEmpty()">
-		<tr><th colspan=11>No se encontraron maestros</th></tr>
+	<c:if test="${list.isEmpty()}">
+		<tr><th colspan=4 class="text-center">No se encontraron jefes de carrera</th></tr>
 	</c:if>
-	<c:forEach items="${list}" var="us" varStatus="contador">
+	<c:forEach items="${list}" var="j" varStatus="contador">
 			<tr class="text-center">
 				<td scope="row">${contador.index+1}</td>
-				<td>${us.getClave_usuario()}</td>
-				<td>${us.getTitulo()}</td>
-				<td>${us.getNombre()}</td>
-				<td>${us.getApellido_paterno()}</td>
-				<td>${us.getApellido_materno()}</td>			
+				<td>${j.getNombreMaestro()}</td>
+				<td>${j.getNombre_carrera()}</td>	
 				<td>
-					<a class="btn btn-sm btn-info" href="reporte.jsp?id=${us.getPk_usuario()}">
-						<i class="fas fa-list-ul"></i> Reporte
-					</a>
-					<a class="btn btn-sm btn-primary" href="CargarMaestroServlet?id=${us.getPk_usuario()}">
-						<i class="fas fa-id-card"></i> Perfil
+					<a class="btn btn-sm btn-danger" href="CargarMaestroServlet?id=${ca.getPk_carrera()}">
+						<i class="fas fa-trash"></i> Borrar
 					</a>
 				</td>
 			</tr>
