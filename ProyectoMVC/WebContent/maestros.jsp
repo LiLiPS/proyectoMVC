@@ -15,8 +15,6 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.min.js"></script>
-	<link rel="stylesheet" href="estilos/tablas.css">
-	<link rel="stylesheet" href="estilos/estilos.css">
 	
 	<title>Lista de materias</title>
 </head>
@@ -57,23 +55,15 @@
 <div class="container">
 	<br>
 	<h2 class="text-center">Maestros</h2>
-	<br><br>
+	<hr>
 	<div class="row">
-		<div class="col col-lg-5">
-			<form action='MaestrosServlet' method='post'>
-				<div class="row">
-					<div class="col col-lg-">
-						<div class="form-group">
-						 <input type='text' placeholder='Clave de maestro' name='claveM' class="form-control">
-						</div>
-					</div>
-					<div class="col">
-						<div class="form-group">
-							<input type='submit' name='buscar' value='Buscar' class="btn btn-sm btn-primary btn-outline-primary"> 
-							<input	type='hidden' name='sts' value='buscar'>
-						</div>
-					</div>
+		<div class="col col-lg-6">
+			<form class="form-inline" action='MaestrosServlet' method='post'>
+				<div class="form-group mx-sm-3 mb-2">
+					<input type='text' placeholder='Clave de maestro' name='claveM' class="form-control">
 				</div>
+				<input type='submit' name='buscar' value='Buscar' class="btn btn-primary btn-outline-primary mb-2"> 
+				<input	type='hidden' name='sts' value='buscar'>
 			</form>
 		</div>
 	</div>
@@ -104,10 +94,10 @@
 				<td>${us.getApellido_paterno()}</td>
 				<td>${us.getApellido_materno()}</td>			
 				<td>
-					<a class="btn btn-sm btn-info" href="reporte.jsp?id=${us.getPk_usuario()}">
+					<a class="btn btn-sm btn-link text-info" href="reporte.jsp?id=${us.getPk_usuario()}">
 						<i class="fas fa-list-ul"></i> Reporte
 					</a>
-					<a class="btn btn-sm btn-primary" href="CargarMaestroServlet?id=${us.getPk_usuario()}">
+					<a class="btn btn-sm btn-link text-primary" href="CargarMaestroServlet?id=${us.getPk_usuario()}">
 						<i class="fas fa-id-card"></i> Perfil
 					</a>
 				</td>

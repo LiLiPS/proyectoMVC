@@ -15,8 +15,6 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.min.js"></script>
-	<link rel="stylesheet" href="estilos/tablas.css">
-	<link rel="stylesheet" href="estilos/estilos.css">
 	
 	<title>Lista de carreras</title>
 </head>
@@ -56,29 +54,20 @@
 	
 <div class="container">
 	<br>
-	<h2 class="text-center">Carreras</h2>
-	<br><br>
+	<h2 class="text-center">Lista de carreras</h2>
+	<hr>
 	<div class="row">
-		<div class="col col-lg-5">
-			<form action='ListaCarrerasServlet' method='post'>
-				<div class="row">
-					<div class="col">
-						<div class="form-group">
-							<input type='text' placeholder='Nombre carrera' name='claveC'
-								class="form-control">
-						</div>
-					</div>
-					<div class="col">
-						<div class="form-group">
-							<input type='submit' name='buscar' value='Buscar carrera'
-								class="btn btn-sm btn-primary btn-outline-primary"> <input
-								type='hidden' name='sts' value='buscar'>
-						</div>
-					</div>
+		<div class="col col-lg-6">
+			<form class="form-inline" action='ListaCarrerasServlet' method='post'>
+				<div class="form-group mx-sm-3 mb-2">
+					<input type='text' placeholder='Nombre carrera' name='claveC' class="form-control">
 				</div>
+				<input type='submit' name='buscar' value='Buscar carrera'
+					class="btn btn-primary btn-outline-primary mb-2">
+				<input type='hidden' name='sts' value='buscar'>
 			</form>
 		</div>
-		<div class="col col-lg-5"></div>
+		<div class="col col-lg-3"></div>
 		<div class="col col-lg-1">
 			<a class="btn btn-success btn-outline-success" href="NuevaCarreraServlet">
 				Crear carrera </a>
@@ -107,10 +96,10 @@
 				<td>${ca.getNombre_carrera()}</td>
 				<td>${ca.getDepartamento()}</td>		
 				<td>
-					<a class="btn btn-sm btn-warning" href="reporte.jsp?id=${ca.getPk_carrera()}">
+					<a class="btn btn-sm btn-link text-warning" href="reporte.jsp?id=${ca.getPk_carrera()}">
 						<i class="fas fa-edit"></i> Editar
 					</a>
-					<a class="btn btn-sm btn-danger" href="CargarMaestroServlet?id=${ca.getPk_carrera()}">
+					<a class="btn btn-sm btn-link text-danger" href="CargarMaestroServlet?id=${ca.getPk_carrera()}">
 						<i class="fas fa-trash"></i> Borrar
 					</a>
 				</td>

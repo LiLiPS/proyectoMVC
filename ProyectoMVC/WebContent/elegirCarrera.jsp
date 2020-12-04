@@ -25,6 +25,7 @@
 	<form action="CarrerasServlet" method="post">
 		<label>Carrera: </label>
 		<select name="carrera" id="carrera">
+			<option value="0">- Seleccione una opción -</option>
 			<c:forEach items="${carreras}" var="c">
 				<option value="${c.getPk_carrera()}">${c.getNombre_carrera()}</option>
 			</c:forEach>

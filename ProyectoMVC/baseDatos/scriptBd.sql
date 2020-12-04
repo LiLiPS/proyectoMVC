@@ -108,3 +108,9 @@ CREATE VIEW view_carreras as
 select carrera.*, departamento.*
 from carrera
 LEFT JOIN departamento ON carrera.fk_departamento = departamento.pk_departamento;
+
+CREATE VIEW view_sabana as
+select grupo.*, CONCAT(usuario.titulo, ' ', usuario.nombre, ' ', usuario.apellido_paterno,' ', usuario.apellido_materno) as nombreMaestro, materia.clave_materia, materia.nombre as nombreMateria, materia.semestre, materia.creditos, carrera.pk_carrera, carrera.nombre_carrera, carrera.abreviatura_carrera from grupo
+LEFT JOIN usuario ON grupo.fk_usuario = usuario.pk_usuario
+LEFT JOIN materia ON grupo.fk_materia = materia.pk_materia
+LEFT JOIN carrera ON materia.fk_carrera = carrera.pk_carrera;

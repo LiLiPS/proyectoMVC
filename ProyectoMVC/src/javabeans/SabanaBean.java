@@ -4,7 +4,7 @@ package javabeans;
 public class SabanaBean {
 	private String clave_horario, clave_materia, clave_carrera, materia, carrera;
 	private String nombreMaestro, periodo, turno, grupo;
-	private int alumnos, semestre, creditos;
+	private int alumnos, semestre, creditos, pk_grupo, fk_usuario, fk_materia, pk_carrera;
 	private String lunes, martes, miercoles, jueves, viernes, aula;
 
 	public String getClave_horario() {
@@ -149,5 +149,37 @@ public class SabanaBean {
 
 	public void setAula(String aula) {
 		this.aula = aula;
+	}
+
+	public int getPk_grupo() {
+		return pk_grupo;
+	}
+
+	public void setPk_grupo(int pk_grupo) {
+		this.pk_grupo = pk_grupo;
+	}
+
+	public int getFk_usuario() {
+		return fk_usuario;
+	}
+
+	public void setFk_usuario(int fk_usuario) {
+		this.fk_usuario = fk_usuario;
+	}
+
+	public int getFk_materia() {
+		return fk_materia;
+	}
+
+	public void setFk_materia(int fk_materia) {
+		this.fk_materia = fk_materia;
+	}
+
+	public int getPk_carrera() {
+		return pk_carrera;
+	}
+
+	public void setPk_carrera(int pk_carrera) {
+		this.pk_carrera = pk_carrera;
 	}
 }

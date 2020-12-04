@@ -58,7 +58,7 @@
 						href="MateriasServlet">Lista de materias</a></li>
 					<li class="nav-item"><a class="nav-link"
 						href="MaestrosServlet">Lista de maestros</a></li>
-					<li class="nav-item"><a class="nav-link" href="sabana.jsp">Sábana</a></li>
+					<li class="nav-item"><a class="nav-link" href="SabanaServlet">Sábana</a></li>
 					<li class="nav-item"><a class="nav-link" href="LogoutServlet">Cerrar sesión</a></li>
 				</c:if>
 				<c:if test="${rol == 'maestro'}">
