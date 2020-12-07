@@ -2,8 +2,8 @@
 package javabeans;
 
 public class CarreraBean {
-	private int pk_carrera, fk_departamento;
-	private String nombre_carrera, abreviatura_carrera, departamento;
+	private int pk_carrera, fk_departamento, pk_jefe_carrera;
+	private String nombre_carrera, abreviatura_carrera, departamento, nombreMaestro;
 
 	public int getPk_carrera() {
 		return pk_carrera;
@@ -43,6 +43,22 @@ public class CarreraBean {
 
 	public void setDepartamento(String departamento) {
 		this.departamento = departamento;
+	}
+
+	public int getPk_jefe_carrera() {
+		return pk_jefe_carrera;
+	}
+
+	public void setPk_jefe_carrera(int pk_jefe_carrera) {
+		this.pk_jefe_carrera = pk_jefe_carrera;
+	}
+
+	public String getNombreMaestro() {
+		return nombreMaestro;
+	}
+
+	public void setNombreMaestro(String nombreMaestro) {
+		this.nombreMaestro = nombreMaestro;
 	}
 
 }

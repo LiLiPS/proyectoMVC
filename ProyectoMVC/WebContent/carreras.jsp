@@ -82,19 +82,21 @@
 	<th scope="col">Abreviatura</th>
 	<th scope="col">Nombre Carrera</th>
 	<th scope="col">Departamento</th>
+	<!--  <th scope="col">Jefe</th>-->
 	<th scope="col">Opciones</th>
 	</tr>
 	</thead>
 	<tbody>
 	<c:if test="${list.isEmpty()}">
-		<tr><th colspan=5 class="text-center">No se encontraron carreras</th></tr>
+		<tr><th colspan=6 class="text-center">No se encontraron carreras</th></tr>
 	</c:if>
 	<c:forEach items="${list}" var="ca" varStatus="contador">
 			<tr class="text-center">
 				<td scope="row">${contador.index+1}</td>
 				<td>${ca.getAbreviatura_carrera()}</td>
 				<td>${ca.getNombre_carrera()}</td>
-				<td>${ca.getDepartamento()}</td>		
+				<td>${ca.getDepartamento()}</td>
+				<!--  <td>${ca.getNombreMaestro()}</td>	-->		
 				<td>
 					<a class="btn btn-sm btn-link text-warning" href="reporte.jsp?id=${ca.getPk_carrera()}">
 						<i class="fas fa-edit"></i> Editar

@@ -104,10 +104,18 @@ select materia.*, carrera.nombre_carrera
 from materia
 LEFT JOIN carrera ON materia.fk_carrera = carrera.pk_carrera;
 
-CREATE VIEW view_carreras as
+/*CREATE VIEW view_carreras as
 select carrera.*, departamento.*
 from carrera
 LEFT JOIN departamento ON carrera.fk_departamento = departamento.pk_departamento;
+*/
+
+CREATE VIEW view_carreras as
+select carrera.*, departamento.*, jefe_carrera.*, CONCAT(usuario.titulo, ' ', usuario.nombre, ' ', usuario.apellido_paterno,' ', usuario.apellido_materno) as nombreMaestro
+from carrera
+LEFT JOIN departamento ON carrera.fk_departamento = departamento.pk_departamento
+LEFT JOIN jefe_carrera ON jefe_carrera.fk_carrera = carrera.pk_carrera
+LEFT JOIN usuario ON jefe_carrera.fk_usuario = usuario.pk_usuario;
 
 CREATE VIEW view_sabana as
 select grupo.*, CONCAT(usuario.titulo, ' ', usuario.nombre, ' ', usuario.apellido_paterno,' ', usuario.apellido_materno) as nombreMaestro, materia.clave_materia, materia.nombre as nombreMateria, materia.semestre, materia.creditos, carrera.pk_carrera, carrera.nombre_carrera, carrera.abreviatura_carrera from grupo

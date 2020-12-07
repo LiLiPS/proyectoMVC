@@ -72,30 +72,30 @@
 				Crear horario </a>
 		</div>
 	</div>
-	<br><br>
+	<br>
 	
 	<table class="table table-hover table-bordered table-striped" border=1>
-	<thead>
-	<tr class="cabecera text-center">
-	<th scope="col">Clave horario</th>	
-	<th scope="col">Materia</th> <!-- clave y nombre -->
-	<th scope="col">Carrera</th> <!-- clave y nombre -->
-	<th scope="col">Maestro</th>
-	<th scope="col">Periodo</th>
-	<th scope="col">Turno</th>
-	<!--<th scope="col">Grupo</th>
-	<th scope="col">No. Alumnos</th>-->
-	<th scope="col">Semestre</th>
-	<th scope="col">Créditos</th>
-	<!--<th scope="col">Aula</th>-->
-	<th scope="col">Operaciones</th>
-	</tr>
-	</thead>
-	<tbody>
-	<c:if test="${sabana.isEmpty()}">
-		<tr><th colspan="9" class="text-center">No se encontraron horarios</th></tr>
-	</c:if>
-	<c:forEach items="${sabana}" var="s">
+		<thead>
+			<tr class="cabecera text-center">
+				<th scope="col">Clave horario</th>	
+				<th scope="col">Materia</th> <!-- clave y nombre -->
+				<th scope="col">Carrera</th> <!-- clave y nombre -->
+				<th scope="col">Maestro</th>
+				<th scope="col">Periodo</th>
+				<th scope="col">Turno</th>
+				<!--<th scope="col">Grupo</th>
+				<th scope="col">No. Alumnos</th>-->
+				<th scope="col">Semestre</th>
+				<th scope="col">Créditos</th>
+				<!--<th scope="col">Aula</th>-->
+				<th scope="col">Operaciones</th>
+			</tr>
+		</thead>
+		<tbody>
+		<c:if test="${sabana.isEmpty()}">
+			<tr><th colspan="9" class="text-center">No se encontraron horarios</th></tr>
+		</c:if>
+		<c:forEach items="${sabana}" var="s">
 			<tr class="text-center">
 				<td>${s.getClave_horario()}</td>
 				<td>${s.getClave_materia()} <br> ${s.getMateria()}</td>
@@ -106,7 +106,7 @@
 				<td>${s.getSemestre()}</td>
 				<td>${s.getCreditos()}</td>			
 				<td>
-					<a class="btn btn-sm btn-link text-info" href="reporte.jsp?id=${s.getPk_grupo()}">
+					<a class="btn btn-sm btn-link text-info" href="detalleSabana.jsp?id=${s.getPk_grupo()}">
 						<i class="fas fa-list-ul"></i> Detalles
 					</a><br>
 					<a class="btn btn-sm btn-link text-warning" href="CargarMaestroServlet?id=${s.getPk_grupo()}">

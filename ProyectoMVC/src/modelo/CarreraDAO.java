@@ -24,7 +24,8 @@ public class CarreraDAO {
                 c.setFk_departamento(rs.getInt("fk_departamento"));
                 c.setNombre_carrera(rs.getString("nombre_carrera"));
                 c.setAbreviatura_carrera(rs.getString("abreviatura_carrera"));
-                c.setDepartamento(rs.getString("departamento"));  
+                c.setDepartamento(rs.getString("departamento")); 
+                c.setNombreMaestro(rs.getString("nombreMaestro"));
                 lista.add(c);  
             }  
             con.close();  
@@ -76,6 +77,7 @@ public class CarreraDAO {
                 c.setFk_departamento(rs.getInt("fk_departamento"));
                 c.setNombre_carrera(rs.getString("nombre_carrera"));
                 c.setAbreviatura_carrera(rs.getString("abreviatura_carrera"));
+                c.setNombreMaestro(rs.getString("nombreMaestro"));
             }  
             con.close();  
         }catch(Exception ex){
@@ -102,6 +104,7 @@ public class CarreraDAO {
                 c.setNombre_carrera(rs.getString("nombre_carrera"));
                 c.setAbreviatura_carrera(rs.getString("abreviatura_carrera"));
                 c.setDepartamento(rs.getString("departamento"));  
+                c.setNombreMaestro(rs.getString("nombreMaestro"));
                 lista.add(c);  
             }  
             con.close();  
@@ -109,5 +112,26 @@ public class CarreraDAO {
           
         return lista;  
     }
+	
+	public static int guardarCarrera(CarreraBean c){ 
+		BD bdConexion = new BD();
+        int status = 0; 
+        
+        try{  
+            Connection con = bdConexion.getConnection();  
+            PreparedStatement ps = con.prepareStatement("INSERT INTO carrera(fk_departamento,nombre_carrera,abreviatura_carrera) values (?,?,?)");  
+            ps.setInt(1, c.getFk_departamento());
+            ps.setString(2, c.getNombre_carrera());  
+            ps.setString(3, c.getAbreviatura_carrera());
+              
+            status = ps.executeUpdate();  
+              
+            con.close();  
+        }catch(Exception ex){
+        	ex.printStackTrace();
+        }  
+          
+        return status;  
+    }  
 
 }

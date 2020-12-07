@@ -38,4 +38,24 @@ public class JefeDAO {
           
         return lista;  
     }
+	
+	public static int guardarJefe(Jefe_CarreraBean j){ 
+		BD bdConexion = new BD();
+        int status = 0; 
+        
+        try{  
+            Connection con = bdConexion.getConnection();  
+            PreparedStatement ps = con.prepareStatement("INSERT INTO jefe_carrera(fk_usuario,fk_carrera) values (?,?)");  
+            ps.setInt(1, j.getFk_usuario());
+            ps.setInt(2, j.getFk_carrera());  
+              
+            status = ps.executeUpdate();  
+              
+            con.close();  
+        }catch(Exception ex){
+        	ex.printStackTrace();
+        }  
+          
+        return status;  
+    }  
 }

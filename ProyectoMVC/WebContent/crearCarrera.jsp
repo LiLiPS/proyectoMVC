@@ -70,6 +70,15 @@
 						</c:forEach>
 					</select>
 				</div>
+				<!--  <div class="form-group">
+				    <label for="jefe">Jefe:</label>
+				    <select class="form-control" name="jefe" id="jefe">
+						<option value="0">- Seleccione una opción -</option>
+						<c:forEach items="${maestros}" var="m">
+							<option value="${m.getPk_usuario()}">${m.getNombre()} ${m.getApellido_paterno()} ${m.getApellido_materno()}</option>
+						</c:forEach>
+					</select>
+				</div>-->
 				<div class="form-group text-center">
 		            <input type="submit" name="boton" id="boton" value="Guardar" class="btn btn-success">
 		            <a href="ListaCarrerasServlet" class="btn btn-danger"> Cancelar </a>

@@ -131,5 +131,24 @@ public class UsuarioDAO {
 		
 		return lista;
 	}
+	
+	public static int actualizarUsuario(int id){  
+		BD bdConexion = new BD();
+        int status = 0;  
+        
+        try{  
+            Connection con = bdConexion.getConnection();  
+            PreparedStatement ps = con.prepareStatement("UPDATE usuario SET fk_rol=4 where pk_usuario=?");  
+            ps.setInt(1, id);
+              
+            status = ps.executeUpdate();  
+            
+            con.close();  
+        }catch(Exception ex){
+        	ex.printStackTrace();
+        }  
+          
+        return status;  
+    }
 
 }

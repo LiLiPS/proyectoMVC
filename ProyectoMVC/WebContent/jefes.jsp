@@ -63,7 +63,7 @@
 		</div>
 		<div class="col col-lg-4"></div>
 		<div class="col col-lg-1">
-			<a class="btn btn-success btn-outline-success" href="form.php">
+			<a class="btn btn-success btn-outline-success" href="NuevoJefeServlet">
 				Asignar jefe de carrera </a>
 		</div>
 	</div>
@@ -88,7 +88,7 @@
 				<td>${j.getNombreMaestro()}</td>
 				<td>${j.getNombre_carrera()}</td>	
 				<td>
-					<a class="btn btn-sm btn-danger" href="CargarMaestroServlet?id=${ca.getPk_carrera()}">
+					<a class="btn btn-sm btn-link text-danger" href="CargarMaestroServlet?id=${ca.getPk_carrera()}">
 						<i class="fas fa-trash"></i> Borrar
 					</a>
 				</td>
