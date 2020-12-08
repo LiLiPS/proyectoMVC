@@ -94,21 +94,16 @@ LEFT JOIN carrera ON usuario.fk_carrera = carrera.pk_carrera
 LEFT JOIN departamento ON carrera.fk_departamento = departamento.pk_departamento;
 
 CREATE VIEW view_grupos as 
-select grupo.*, usuario.*, materia.pk_materia, materia.fk_carrera as fk_carrera_materia, materia.clave_materia, materia.nombre as nombre_materia, materia.semestre, materia.horas_t, materia.horas_p, materia.creditos   
+select grupo.*, usuario.*, materia.pk_materia, materia.fk_carrera as fk_carrera_materia, materia.clave_materia, materia.nombre as nombre_materia, materia.semestre, materia.horas_t, materia.horas_p, materia.creditos, carrera.*   
 from grupo 
 LEFT JOIN materia ON grupo.fk_materia = materia.pk_materia
-LEFT JOIN usuario ON grupo.fk_usuario = usuario.pk_usuario;
+LEFT JOIN usuario ON grupo.fk_usuario = usuario.pk_usuario
+LEFT JOIN carrera ON materia.fk_carrera = carrera.pk_carrera;
 
 CREATE VIEW view_materias as
 select materia.*, carrera.nombre_carrera
 from materia
 LEFT JOIN carrera ON materia.fk_carrera = carrera.pk_carrera;
-
-/*CREATE VIEW view_carreras as
-select carrera.*, departamento.*
-from carrera
-LEFT JOIN departamento ON carrera.fk_departamento = departamento.pk_departamento;
-*/
 
 CREATE VIEW view_carreras as
 select carrera.*, departamento.*, jefe_carrera.*, CONCAT(usuario.titulo, ' ', usuario.nombre, ' ', usuario.apellido_paterno,' ', usuario.apellido_materno) as nombreMaestro
@@ -122,3 +117,12 @@ select grupo.*, CONCAT(usuario.titulo, ' ', usuario.nombre, ' ', usuario.apellid
 LEFT JOIN usuario ON grupo.fk_usuario = usuario.pk_usuario
 LEFT JOIN materia ON grupo.fk_materia = materia.pk_materia
 LEFT JOIN carrera ON materia.fk_carrera = carrera.pk_carrera;
+
+CREATE VIEW view_horarios AS
+select * from horario 
+LEFT JOIN grupo ON horario.fk_grupo = grupo.pk_grupo
+LEFT JOIN hora ON horario.fk_hora = hora.pk_hora;
+
+CREATE VIEW view_horas AS
+SELECT horario.fk_hora, horario.dia, grupo.fk_usuario from horario
+LEFT JOIN grupo ON horario.fk_grupo = grupo.pk_grupo;

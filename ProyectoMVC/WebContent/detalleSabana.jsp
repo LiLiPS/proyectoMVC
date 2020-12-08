@@ -19,6 +19,7 @@
 		<%
 		String usuario;
 		String rol;
+		String lunes, martes, miercoles, jueves, viernes;
 		
 		if(session.getAttribute("usuario")!=null && session.getAttribute("rol")!=null){
 			usuario = session.getAttribute("usuario").toString(); 
@@ -28,7 +29,7 @@
 				out.print("<script>location.replace('menu.jsp');</script>");		
 		}else
 			out.print("<script>location.replace('login.jsp');</script>");
-	
+			
 		%>
 		<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #D5D5D5;">
 			<a class="navbar-brand" href="#">Administración de materias</a>
@@ -52,10 +53,29 @@
 		<div class="container">
 			<h2 class="text-center">Detalles sábana</h2>
 			<br>
+			
+			<c:forEach items="${horario}" var="h">
+				<c:if test="${h.getDia() == 1 }">
+					<p hidden="">${lunes = h.getHora()}</p>
+				</c:if>
+				<c:if test="${h.getDia() == 2 }">
+					<p hidden="">${martes = h.getHora()}</p>
+				</c:if>
+				<c:if test="${h.getDia() == 3 }">
+					<p hidden="">${miercoles = h.getHora()}</p>
+				</c:if>
+				<c:if test="${h.getDia() == 4 }">
+					<p hidden="">${jueves = h.getHora()}</p>
+				</c:if>
+				<c:if test="${h.getDia() == 5 }">
+					<p hidden="">${viernes = h.getHora()}</p>
+				</c:if>
+			</c:forEach>
+			
 			<table class="table table-hover table-bordered table-striped" border=1>
 			<thead>
 				<tr class="cabecera text-center">
-					<th scope="col">Clave horario</th>	
+					<!--  <th scope="col">Clave horario</th>	-->
 					<th scope="col">Grupo</th>
 					<th scope="col">No. Alumnos</th>
 					<th scope="col">Aula</th>
@@ -67,21 +87,20 @@
 				</tr>
 			</thead>
 			<tbody>
-			<c:if test="${sabana.isEmpty()}">
-				<tr><th colspan="9" class="text-center">No se encontraron horarios</th></tr>
+			<c:if test="${horario.isEmpty()}">
+				<tr><th colspan="8" class="text-center">No se encontraron horarios</th></tr>
 			</c:if>
-			<c:forEach items="${sabana}" var="s">
 				<tr class="text-center">
-					<td>${s.getClave_horario()}</td>
-					<td>${s.getClave_materia()} <br> ${s.getMateria()}</td>
-					<td>${s.getClave_carrera()} <br> ${s.getCarrera()}</td>
-					<td>${s.getNombreMaestro()}</td>
-					<td>${s.getPeriodo()}</td>
-					<td>${s.getTurno()}</td>
-					<td>${s.getSemestre()}</td>
-					<td>${s.getCreditos()}</td>
+					<!-- <td>${s.getClave_horario()}</td>-->
+					<td>${horario.get(0).getGrupo()}</td>
+					<td>${horario.get(0).getAlumnos()}</td>
+					<td>${horario.get(0).getAula()}</td>
+					<td>${lunes}</td>
+					<td>${martes}</td>
+					<td>${miercoles}</td>
+					<td>${jueves}</td>
+					<td>${viernes}</td>
 				</tr>
-			</c:forEach>
 			</tbody>
 		</table>
 		</div>

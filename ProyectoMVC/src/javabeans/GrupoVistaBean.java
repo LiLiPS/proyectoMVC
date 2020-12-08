@@ -7,7 +7,48 @@ public class GrupoVistaBean {
 	private int pk_grupo, fk_usuario, fk_materia, alumnos;
 	private String clave_grupo, grupo, aula, periodo, turno;
 	private int pk_materia, fk_carrera_materia, semestre, creditos, horas_t, horas_p;
-	private String clave_materia, nombre_materia;
+	private String clave_materia, nombre_materia, nombre_carrera;
+	private String hora_lunes, hora_martes, hora_miercoles, hora_jueves, hora_viernes;
+
+	public String getHora_lunes() {
+		return hora_lunes;
+	}
+
+	public String getHora_martes() {
+		return hora_martes;
+	}
+
+	public String getHora_miercoles() {
+		return hora_miercoles;
+	}
+
+	public String getHora_jueves() {
+		return hora_jueves;
+	}
+
+	public String getHora_viernes() {
+		return hora_viernes;
+	}
+
+	public void setHora_lunes(String hora_lunes) {
+		this.hora_lunes = hora_lunes;
+	}
+
+	public void setHora_martes(String hora_martes) {
+		this.hora_martes = hora_martes;
+	}
+
+	public void setHora_miercoles(String hora_miercoles) {
+		this.hora_miercoles = hora_miercoles;
+	}
+
+	public void setHora_jueves(String hora_jueves) {
+		this.hora_jueves = hora_jueves;
+	}
+
+	public void setHora_viernes(String hora_viernes) {
+		this.hora_viernes = hora_viernes;
+	}
 
 	public int getPk_usuario() {
 		return pk_usuario;
@@ -247,5 +288,13 @@ public class GrupoVistaBean {
 
 	public void setNombre_materia(String nombre_materia) {
 		this.nombre_materia = nombre_materia;
+	}
+
+	public String getNombre_carrera() {
+		return nombre_carrera;
+	}
+
+	public void setNombre_carrera(String nombre_carrera) {
+		this.nombre_carrera = nombre_carrera;
 	}
 }

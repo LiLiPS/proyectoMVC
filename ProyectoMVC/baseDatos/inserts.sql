@@ -123,8 +123,8 @@ values(1, 1,'4007','G01','A','D1','Agosto-Diciembre/2020','Matutino',34);
 
 /*HORARIOS*/
 INSERT INTO horario (fk_grupo, fk_hora, dia)
-values(1, 4, 'Martes'),
-	  (1, 4, 'Jueves'),
-	  (1, 6, 'Viernes');
+values(1, 4, 2),
+	  (1, 4, 4),
+	  (1, 6, 5);
 
 	   

@@ -73,11 +73,12 @@ public class CarreraDAO {
             ps.setInt(1,id);  
             ResultSet rs = ps.executeQuery();  
             if(rs.next()){ 
-            	c.setPk_carrera(rs.getInt("pk_materia"));
+            	c.setPk_carrera(rs.getInt("pk_carrera"));
                 c.setFk_departamento(rs.getInt("fk_departamento"));
                 c.setNombre_carrera(rs.getString("nombre_carrera"));
                 c.setAbreviatura_carrera(rs.getString("abreviatura_carrera"));
                 c.setNombreMaestro(rs.getString("nombreMaestro"));
+                c.setPk_jefe_carrera(rs.getInt("fk_usuario"));
             }  
             con.close();  
         }catch(Exception ex){
@@ -132,6 +133,66 @@ public class CarreraDAO {
         }  
           
         return status;  
-    }  
+    }
+	
+	public static int getUlitmaCarrera() {
+		BD bdConexion = new BD();
+		int pk = 0;
+        String instruccion = "select pk_carrera from view_carreras order by pk_carrera desc limit 1";
+          
+        try{  
+            Connection con = bdConexion.getConnection();  
+            PreparedStatement ps = con.prepareStatement(instruccion);   
+            ResultSet rs = ps.executeQuery();  
+            if(rs.next()){ 
+            	pk = rs.getInt("pk_carrera");
+            }  
+            con.close();  
+        }catch(Exception ex){
+        	ex.printStackTrace();
+        }  
+          
+        return pk;
+	}
+	
+	public static int actualizarCarrera(CarreraBean c){ 
+		BD bdConexion = new BD();
+        int status = 0; 
+        
+        try{  
+            Connection con = bdConexion.getConnection();  
+            PreparedStatement ps = con.prepareStatement("UPDATE carrera SET fk_departamento=?, nombre_carrera=?, abreviatura_carrera=? where pk_carrera=?");  
+            ps.setInt(1, c.getFk_departamento());
+            ps.setString(2, c.getNombre_carrera());  
+            ps.setString(3, c.getAbreviatura_carrera());
+            ps.setInt(4, c.getPk_carrera());
+              
+            status = ps.executeUpdate();  
+              
+            con.close();  
+        }catch(Exception ex){
+        	ex.printStackTrace();
+        }  
+          
+        return status;  
+    }
+	
+	public static int borrarCarrera(int id_carrera){  
+		BD bdConexion = new BD();
+        int status = 0;
+        
+        try{  
+            Connection con = bdConexion.getConnection();  
+            PreparedStatement ps = con.prepareStatement("delete from carrera where pk_carrera=?");
+            ps.setInt(1,id_carrera);
+            status=ps.executeUpdate();
+            
+            con.close();  
+        }catch(Exception e){
+        	e.printStackTrace();
+        }  
+          
+        return status;  
+    }
 
 }

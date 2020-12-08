@@ -13,7 +13,7 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.min.js"></script>
     
-	<title>Crear una carrera</title>
+	<title>Editar una carrera</title>
 </head>
 <body class="body">
 
@@ -49,33 +49,43 @@
 	
 	<div class="container">
 		<br>
-		<h1 style="text-align: center">Crear una carrera</h1>
+		<h1 style="text-align: center">Editar una carrera</h1>
 		<br>
 		<div id="contenedor">
-			<form action="NuevaCarreraServlet" method="post">
+			<form action="EditarCarreraServlet" method="post">
+			 <input type="hidden" name="pk_carrera" id="pk_carrera" class="form-control"  value="${carrera.getPk_carrera()}">
+			 <input type="hidden" name="pk_jefe" id="pk_jefe" value="${carrera.getPk_jefe_carrera()}">
 				<div class="form-group">
 		            <label for="abreviatura_carrera">Abreviatura carrera: </label>
-		            <input type="text" name="abreviatura_carrera" id="abreviatura_carrera" class="form-control" required>
+		            <input type="text" name="abreviatura_carrera" id="abreviatura_carrera" class="form-control"  value="${carrera.getAbreviatura_carrera()}" required>
 		        </div>
 		        <div class="form-group">
 		            <label for="nombre_carrera">Nombre carrera: </label>
-		            <input type="text" name="nombre_carrera" id="nombre_carrera" class="form-control" required>
+		            <input type="text" name="nombre_carrera" id="nombre_carrera" class="form-control" value="${carrera.getNombre_carrera()}" required>
 		        </div>
 		        <div class="form-group">
 				    <label for="departamento">Departamento:</label>
 				    <select class="form-control" name="departamento" id="departamento">
-						<option value="0">- Seleccione una opción -</option>
 						<c:forEach items="${departamentos}" var="d">
-							<option value="${d.getPk_departamento()}">${d.getDepartamento()}</option>
+							<c:if test="${carrera.getFk_departamento() == d.getPk_departamento()}">
+								<option value="${d.getPk_departamento()}" selected>${d.getDepartamento()}</option>
+							</c:if>
+							<c:if test="${carrera.getFk_departamento() != d.getPk_departamento()}">
+								<option value="${d.getPk_departamento()}">${d.getDepartamento()}</option>
+							</c:if>
 						</c:forEach>
 					</select>
 				</div>
 				<div class="form-group">
 				    <label for="jefe">Jefe:</label>
 				    <select class="form-control" name="jefe" id="jefe">
-						<option value="0">- Seleccione una opción -</option>
-						<c:forEach items="${maestros}" var="m">
-							<option value="${m.getPk_usuario()}">${m.getNombre()} ${m.getApellido_paterno()} ${m.getApellido_materno()}</option>
+				    	<c:forEach items="${maestros}" var="m">
+							<c:if test="${carrera.getPk_jefe_carrera() == m.getPk_usuario()}">
+								<option value="${m.getPk_usuario()}" selected>${m.getNombre()} ${m.getApellido_paterno()} ${m.getApellido_materno()}</option>
+							</c:if>
+							<c:if test="${carrera.getPk_jefe_carrera() != m.getPk_usuario()}">
+								<option value="${m.getPk_usuario()}">${m.getNombre()} ${m.getApellido_paterno()} ${m.getApellido_materno()}</option>
+							</c:if>
 						</c:forEach>
 					</select>
 				</div>

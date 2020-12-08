@@ -66,10 +66,14 @@
 				<input type='hidden' name='sts' value='buscar'>
 			</form>
 		</div>
-		<div class="col col-lg-5"></div>
-		<div class="col col-lg-1">
-			<a class="btn btn-success btn-outline-success" href="form.php">
-				Crear horario </a>
+		<div class="col col-lg-5"><a class="btn btn-success btn-outline-success" href="form.php">
+				Subir archivo
+			</a></div>
+		<div class="col col-lg-2">
+			
+			<a class="btn btn-success btn-outline-success" href="NuevoGrupoServlet">
+				Crear grupo
+			</a>
 		</div>
 	</div>
 	<br>
@@ -83,11 +87,8 @@
 				<th scope="col">Maestro</th>
 				<th scope="col">Periodo</th>
 				<th scope="col">Turno</th>
-				<!--<th scope="col">Grupo</th>
-				<th scope="col">No. Alumnos</th>-->
 				<th scope="col">Semestre</th>
 				<th scope="col">Créditos</th>
-				<!--<th scope="col">Aula</th>-->
 				<th scope="col">Operaciones</th>
 			</tr>
 		</thead>
@@ -106,13 +107,13 @@
 				<td>${s.getSemestre()}</td>
 				<td>${s.getCreditos()}</td>			
 				<td>
-					<a class="btn btn-sm btn-link text-info" href="detalleSabana.jsp?id=${s.getPk_grupo()}">
+					<a class="btn btn-sm btn-link text-info" href="DetalleSabanaServlet?id=${s.getPk_grupo()}">
 						<i class="fas fa-list-ul"></i> Detalles
 					</a><br>
 					<a class="btn btn-sm btn-link text-warning" href="CargarMaestroServlet?id=${s.getPk_grupo()}">
 						<i class="fas fa-edit"></i> Editar
 					</a><br>
-					<a class="btn btn-sm btn-link text-danger" href="CargarMaestroServlet?id=${s.getPk_grupo()}">
+					<a class="btn btn-sm btn-link text-danger" href="EliminarGrupoServlet?id=${s.getPk_grupo()}">
 						<i class="fas fa-trash"></i> Eliminar
 					</a>
 				</td>

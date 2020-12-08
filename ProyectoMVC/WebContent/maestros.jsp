@@ -82,8 +82,8 @@
 	</tr>
 	</thead>
 	<tbody>
-	<c:if test="list.isEmpty()">
-		<tr><th colspan=11>No se encontraron maestros</th></tr>
+	<c:if test="${list.isEmpty()}">
+		<tr><th colspan=7 class="text-center">No se encontraron maestros</th></tr>
 	</c:if>
 	<c:forEach items="${list}" var="us" varStatus="contador">
 			<tr class="text-center">
@@ -94,7 +94,7 @@
 				<td>${us.getApellido_paterno()}</td>
 				<td>${us.getApellido_materno()}</td>			
 				<td>
-					<a class="btn btn-sm btn-link text-info" href="reporte.jsp?id=${us.getPk_usuario()}">
+					<a class="btn btn-sm btn-link text-info" href="ReporteServlet?id=${us.getPk_usuario()}">
 						<i class="fas fa-list-ul"></i> Reporte
 					</a>
 					<a class="btn btn-sm btn-link text-primary" href="CargarMaestroServlet?id=${us.getPk_usuario()}">

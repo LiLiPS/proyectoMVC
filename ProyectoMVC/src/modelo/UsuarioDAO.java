@@ -132,14 +132,35 @@ public class UsuarioDAO {
 		return lista;
 	}
 	
-	public static int actualizarUsuario(int id){  
+	public static int actualizarUsuario(int id, int rol){  
 		BD bdConexion = new BD();
         int status = 0;  
         
         try{  
             Connection con = bdConexion.getConnection();  
-            PreparedStatement ps = con.prepareStatement("UPDATE usuario SET fk_rol=4 where pk_usuario=?");  
-            ps.setInt(1, id);
+            PreparedStatement ps = con.prepareStatement("UPDATE usuario SET fk_rol=? where pk_usuario=?");  
+            ps.setInt(1, rol);
+            ps.setInt(2, id);
+              
+            status = ps.executeUpdate();  
+            
+            con.close();  
+        }catch(Exception ex){
+        	ex.printStackTrace();
+        }  
+          
+        return status;  
+    }
+	
+	public static int actualizarCarreraUsuario(int id, int carrera){  
+		BD bdConexion = new BD();
+        int status = 0;  
+        
+        try{  
+            Connection con = bdConexion.getConnection();  
+            PreparedStatement ps = con.prepareStatement("UPDATE usuario SET fk_carrera=? where pk_usuario=?");  
+            ps.setInt(1, carrera);
+            ps.setInt(2, id);
               
             status = ps.executeUpdate();  
             

@@ -77,12 +77,12 @@
 		
 	<table class="table table-hover table-bordered table-striped" border=1>
 	<thead>
-	<tr class="cabecera text-center">
+	<tr class="text-center">
 	<th scope="col">No.</th>
 	<th scope="col">Abreviatura</th>
 	<th scope="col">Nombre Carrera</th>
 	<th scope="col">Departamento</th>
-	<!--  <th scope="col">Jefe</th>-->
+	<th scope="col">Jefe</th>
 	<th scope="col">Opciones</th>
 	</tr>
 	</thead>
@@ -96,13 +96,13 @@
 				<td>${ca.getAbreviatura_carrera()}</td>
 				<td>${ca.getNombre_carrera()}</td>
 				<td>${ca.getDepartamento()}</td>
-				<!--  <td>${ca.getNombreMaestro()}</td>	-->		
+				<td>${ca.getNombreMaestro()}</td>	
 				<td>
-					<a class="btn btn-sm btn-link text-warning" href="reporte.jsp?id=${ca.getPk_carrera()}">
+					<a class="btn btn-sm btn-link text-warning" href="CargarCarreraServlet?id=${ca.getPk_carrera()}">
 						<i class="fas fa-edit"></i> Editar
 					</a>
-					<a class="btn btn-sm btn-link text-danger" href="CargarMaestroServlet?id=${ca.getPk_carrera()}">
-						<i class="fas fa-trash"></i> Borrar
+					<a class="btn btn-sm btn-link text-info" href="CargarMaestrosCarreraServlet?id=${ca.getPk_carrera()}">
+						<i class="fas fa-list"></i> Lista profesores
 					</a>
 				</td>
 			</tr>

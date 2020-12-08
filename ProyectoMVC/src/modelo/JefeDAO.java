@@ -57,5 +57,24 @@ public class JefeDAO {
         }  
           
         return status;  
-    }  
+    }
+	
+	public static int borrarJefe(int id_jefe, int carrera){  
+		BD bdConexion = new BD();
+        int status = 0;
+        
+        try{  
+            Connection con = bdConexion.getConnection();  
+            PreparedStatement ps = con.prepareStatement("delete from jefe_carrera where fk_usuario=? AND fk_carrera=?");
+            ps.setInt(1,id_jefe);
+            ps.setInt(2,carrera);
+            status=ps.executeUpdate();
+            
+            con.close();  
+        }catch(Exception e){
+        	e.printStackTrace();
+        }  
+          
+        return status;  
+    }
 }

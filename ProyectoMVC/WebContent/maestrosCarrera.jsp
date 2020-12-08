@@ -18,7 +18,7 @@
 	<link rel="stylesheet" href="estilos/tablas.css">
 	<link rel="stylesheet" href="estilos/estilos.css">
 	
-	<title>Lista de jefes de carrera</title>
+	<title>Lista de maestros de carrera</title>
 </head>
 <body class="body">
 	<%
@@ -46,6 +46,7 @@
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
+				<li class="nav-item"><a class="nav-link" href="ListaCarrerasServlet">Regresar</a></li>
 				<li class="nav-item"><a class="nav-link" href="menu.jsp">Regresar a menú</a>
 				</li>
 				<li class="nav-item"><a class="nav-link" href="LogoutServlet">Cerrar sesión</a>
@@ -56,17 +57,28 @@
 	
 <div class="container">
 	<br>
-	<h2 class="text-center">Jefes de carrera</h2>
-	<br><br>
+	<h2 class="text-center">Lista de maestros</h2>
+	<hr>
 	<div class="row">
-		<div class="col col-lg-5">
+		<div class="col col-lg-6">
+			<form class="form-inline" action='CargarMaestrosCarreraServlet' method='post'>
+				<input type="hidden" name="pk_carrera" id="pk_carrera" value="${pk_carrera}">
+				<div class="form-group mx-sm-3 mb-2">
+				    <select class="form-control" name="maestro" id="maestro">
+						<option value="0">- Seleccione un maestro -</option>
+						<c:forEach items="${listamaestros}" var="ma">
+							<option value="${ma.getPk_usuario()}">${ma.getNombre()} ${ma.getApellido_paterno()} ${ma.getApellido_materno()}</option>
+						</c:forEach>
+					</select>
+				</div>
+				<input type='submit' name='buscar' value='Agregar maestro'
+					class="btn btn-primary btn-outline-primary mb-2">
+				<input type='hidden' name='sts' value='buscar'>
+			</form>
 		</div>
-		<div class="col col-lg-4"></div>
-		<div class="col col-lg-1">
-			<a class="btn btn-success btn-outline-success" href="NuevoJefeServlet">
-				Asignar jefe de carrera </a>
-		</div>
+		<div class="col col-lg-3"></div>
 	</div>
+	<br>
 	<br>
 	
 	<table class="table table-hover table-bordered table-striped" border=1>
@@ -74,24 +86,16 @@
 	<tr class="cabecera text-center">
 	<th scope="col">No.</th>
 	<th scope="col">Nombre maestro</th>
-	<th scope="col">Nombre Carrera</th>
-	<th scope="col">Opciones</th>
 	</tr>
 	</thead>
 	<tbody>
-	<c:if test="${list.isEmpty()}">
-		<tr><th colspan=4 class="text-center">No se encontraron jefes de carrera</th></tr>
+	<c:if test="${maestros.isEmpty()}">
+		<tr><th colspan=2 class="text-center">No se encontraron maestros de la carrera</th></tr>
 	</c:if>
-	<c:forEach items="${list}" var="j" varStatus="contador">
+	<c:forEach items="${maestros}" var="m" varStatus="contador">
 			<tr class="text-center">
 				<td scope="row">${contador.index+1}</td>
-				<td>${j.getNombreMaestro()}</td>
-				<td>${j.getNombre_carrera()}</td>	
-				<td>
-					<a class="btn btn-sm btn-link text-danger" href="CargarMaestroServlet?id=${ca.getPk_carrera()}">
-						<i class="fas fa-trash"></i> Borrar
-					</a>
-				</td>
+				<td>${m.getNombre()} ${m.getApellido_paterno()} ${m.getApellido_materno()}</td>	
 			</tr>
 		</c:forEach>
 		</tbody>

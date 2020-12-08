@@ -2,7 +2,8 @@
 package javabeans;
 
 public class HorarioBean {
-	private int pk_horario, fk_grupo, fk_hora, dia;
+	private int pk_horario, fk_grupo, fk_hora, dia, alumnos;
+	private String grupo, aula, hora;
 
 	public int getPk_horario() {
 		return pk_horario;
@@ -34,5 +35,37 @@ public class HorarioBean {
 
 	public void setDia(int dia) {
 		this.dia = dia;
+	}
+
+	public int getAlumnos() {
+		return alumnos;
+	}
+
+	public void setAlumnos(int alumnos) {
+		this.alumnos = alumnos;
+	}
+
+	public String getAula() {
+		return aula;
+	}
+
+	public void setAula(String aula) {
+		this.aula = aula;
+	}
+
+	public String getGrupo() {
+		return grupo;
+	}
+
+	public void setGrupo(String grupo) {
+		this.grupo = grupo;
+	}
+
+	public String getHora() {
+		return hora;
+	}
+
+	public void setHora(String hora) {
+		this.hora = hora;
 	}
 }

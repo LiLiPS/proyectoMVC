@@ -115,5 +115,67 @@ public class GrupoDAO {
 		
 		return lista;
 	}
+	
+	public static List<GrupoVistaBean> getGruposbyMaestro(int maestro) {
+		BD bdConexion = new BD();
+		List<GrupoVistaBean> lista = new ArrayList<GrupoVistaBean>();
+		
+		String instruccion = "select * from view_grupos where pk_usuario=?";
+				
+		try {
+			Connection con = bdConexion.getConnection();
+			PreparedStatement ps = con.prepareStatement(instruccion);
+			ps.setInt(1, maestro);
+
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()){ 
+				GrupoVistaBean gv = new GrupoVistaBean();
+				gv.setPk_grupo(rs.getInt("pk_grupo"));
+				gv.setClave_grupo(rs.getString("clave_grupo"));
+				gv.setGrupo(rs.getString("grupo"));
+				gv.setAula(rs.getString("aula"));
+				gv.setPeriodo(rs.getString("periodo"));
+				gv.setTurno(rs.getString("turno"));
+				gv.setAlumnos(rs.getInt("alumnos"));
+				gv.setNombre(rs.getString("nombre"));
+				gv.setApellido_paterno(rs.getString("apellido_paterno"));
+				gv.setApellido_materno(rs.getString("apellido_materno"));
+				gv.setNombre_materia(rs.getString("nombre_materia"));
+				gv.setClave_materia(rs.getString("clave_materia"));
+				gv.setNombre_carrera(rs.getString("nombre_carrera"));
+				gv.setSemestre(rs.getInt("semestre"));
+				gv.setHoras_p(rs.getInt("horas_p"));
+				gv.setHoras_t(rs.getInt("horas_t"));
+				gv.setCreditos(rs.getInt("creditos"));
+				lista.add(gv); 
+			}
+			
+			con.close(); 
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return lista;
+	}
+	
+	public static int getUlitmoGrupo() {
+		BD bdConexion = new BD();
+		int pk = 0;
+        String instruccion = "select pk_grupo from grupo order by pk_grupo desc limit 1";
+          
+        try{  
+            Connection con = bdConexion.getConnection();  
+            PreparedStatement ps = con.prepareStatement(instruccion);   
+            ResultSet rs = ps.executeQuery();  
+            if(rs.next()){ 
+            	pk = rs.getInt("pk_grupo");
+            }  
+            con.close();  
+        }catch(Exception ex){
+        	ex.printStackTrace();
+        }  
+          
+        return pk;
+	}
 
 }

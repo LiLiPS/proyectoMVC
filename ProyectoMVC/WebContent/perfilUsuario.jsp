@@ -58,16 +58,18 @@
 	<div class="container">
 		<h1 style="text-align: center">Datos del maestro</h1>
 		<br>
-		<div class="card text-center" style="width: 18rem;">
-		  <img class="card-img-top" src="img/user.png" alt="Card image cap">
-		  <div class="card-body">
-		    <h5 class="card-title">${maestro.get(0).getNombre()} ${maestro.get(0).getApellido_paterno()} ${maestro.get(0).getApellido_materno()}</h5>
-		  </div>
-		  <ul class="list-group list-group-flush">
-		    <li class="list-group-item">Teléfono: <br> ${maestro.get(0).getTelefono()}</li>
-		    <li class="list-group-item">Correo electrónico: <br> ${maestro.get(0).getCorreo()}</li>
-		    <li class="list-group-item">Departamento: <br> ${maestro.get(0).getDepartamento()}</li>
-		  </ul>
+		<div class="col-4 offset-4">
+			<div class="card text-center">
+			  <img class="card-img-top" src="img/user.png" alt="Card image cap">
+			  <div class="card-body">
+			    <h5 class="card-title">${maestro.get(0).getNombre()} ${maestro.get(0).getApellido_paterno()} ${maestro.get(0).getApellido_materno()}</h5>
+			  </div>
+			  <ul class="list-group list-group-flush">
+			    <li class="list-group-item">Teléfono: <br> ${maestro.get(0).getTelefono()}</li>
+			    <li class="list-group-item">Correo electrónico: <br> ${maestro.get(0).getCorreo()}</li>
+			    <li class="list-group-item">Departamento: <br> ${maestro.get(0).getDepartamento()}</li>
+			  </ul>
+			</div>
 		</div>
 	</div>
 </body>
