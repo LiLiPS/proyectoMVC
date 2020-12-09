@@ -13,7 +13,7 @@
 	<div class="body"></div>
 	<div class="grad"></div>
 	<div class="header">
-		<div><h1>LOGIN</h1></div>
+		<div><h1>Inicio de sesión</h1></div>
 	</div>
 	
 	<form action="LoginServlet" method="post">
