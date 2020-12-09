@@ -158,6 +158,38 @@ public class GrupoDAO {
 		return lista;
 	}
 	
+	public static GrupoBean getGruposbyId(int pk) {
+		BD bdConexion = new BD();
+		GrupoBean g = new GrupoBean();
+		
+		String instruccion = "select * from grupo where pk_grupo=?";
+				
+		try {
+			Connection con = bdConexion.getConnection();
+			PreparedStatement ps = con.prepareStatement(instruccion);
+			ps.setInt(1, pk);
+
+			ResultSet rs = ps.executeQuery();
+			if(rs.next()){ 
+				g.setPk_grupo(rs.getInt("pk_grupo"));
+				g.setClave_grupo(rs.getString("clave_grupo"));
+				g.setGrupo(rs.getString("grupo"));
+				g.setAula(rs.getString("aula"));
+				g.setPeriodo(rs.getString("periodo"));
+				g.setTurno(rs.getString("turno"));
+				g.setAlumnos(rs.getInt("alumnos"));
+				g.setFk_usuario(rs.getInt("fk_usuario"));
+				g.setFk_materia(rs.getInt("fk_materia"));
+			}
+			
+			con.close(); 
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return g;
+	}
+	
 	public static int getUlitmoGrupo() {
 		BD bdConexion = new BD();
 		int pk = 0;

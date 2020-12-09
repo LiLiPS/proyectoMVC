@@ -58,14 +58,18 @@
 		<h4>Datos de grupo:</h4>
 		<hr>
 		<form action="EditarGrupoServlet" method="post">
-			<input type="hidden" name="pk_grupo" id="pk_grupo" value="${g.getPk_grupo()}">
+			<input type="hidden" name="pk_grupo" id="pk_grupo" value="${grupo.getPk_grupo()}">
 			<div class="row">
 				<div class="form-group col">
 			    <label for="maestro">Maestro:</label>
 			    <select class="form-control" name="maestro" id="maestro">
-					<option value="0">- Seleccione una opción -</option>
-					<c:forEach items="${maestros}" var="m">
-						<option value="${m.getPk_usuario()}">${m.getNombre()} ${m.getApellido_paterno()} ${m.getApellido_materno()}</option>
+			    	<c:forEach items="${maestros}" var="m">
+						<c:if test="${grupo.getFk_usuario() == m.getPk_usuario()}">
+							<option value="${m.getPk_usuario()}" selected>${m.getNombre()} ${m.getApellido_paterno()} ${m.getApellido_materno()}</option>
+						</c:if>
+						<c:if test="${grupo.getFk_usuario() != m.getPk_usuario()}">
+							<option value="${m.getPk_usuario()}">${m.getNombre()} ${m.getApellido_paterno()} ${m.getApellido_materno()}</option>
+						</c:if>						
 					</c:forEach>
 				</select>
 				</div>
@@ -74,7 +78,12 @@
 				    <select class="form-control" name="materia" id="materia">
 						<option value="0">- Seleccione una opción -</option>
 						<c:forEach items="${materias}" var="ma">
-							<option value="${ma.getPk_materia()}">${ma.getNombre()}</option>
+							<c:if test="${grupo.getFk_materia() == ma.getPk_materia()}">
+								<option value="${ma.getPk_materia()}" selected>${ma.getNombre()}</option>
+							</c:if>
+							<c:if test="${grupo.getFk_materia() != ma.getPk_materia()}">
+								<option value="${ma.getPk_materia()}">${ma.getNombre()}</option>
+							</c:if>
 						</c:forEach>
 					</select>
 				</div>
@@ -82,31 +91,31 @@
 			<div class="row">
 				<div class="form-group col">
 		            <label for="clave_horario">Clave horario: </label>
-		            <input type="text" name="clave_horario" id="clave_horario" class="form-control" required>
+		            <input type="text" name="clave_horario" id="clave_horario" class="form-control" value="${grupo.getClave_grupo()}" required>
 		        </div>
 		        <div class="form-group col">
 		            <label for="grupo">Grupo: </label>
-		            <input type="text" name="grupo" id="grupo" class="form-control" required>
+		            <input type="text" name="grupo" id="grupo" class="form-control" value="${grupo.getGrupo()}" required>
 		        </div>
 			</div>
 			<div class="row">
 				<div class="form-group col">
 		            <label for="aula">Aula: </label>
-		            <input type="text" name="aula" id="aula" class="form-control" required>
+		            <input type="text" name="aula" id="aula" class="form-control" value="${grupo.getAula()}" required>
 		        </div>
 		        <div class="form-group col">
 		            <label for="periodo">Periodo: </label>
-		            <input type="text" name="periodo" id="periodo" class="form-control" required>
+		            <input type="text" name="periodo" id="periodo" class="form-control" value="${grupo.getPeriodo()}" required>
 		        </div>
 			</div>
 	        <div class="row">
 	        	<div class="form-group col">
 		            <label for="turno">Turno: </label>
-		            <input type="text" name="turno" id="turno"  class="form-control" required>
+		            <input type="text" name="turno" id="turno"  class="form-control" value="${grupo.getTurno()}" required>
 		        </div>
 		        <div class="form-group col">
 		            <label for="alumnos">Alumnos: </label>
-		            <input type="number" name="alumnos" id="alumnos" class="form-control" required>
+		            <input type="number" name="alumnos" id="alumnos" class="form-control" value="${grupo.getAlumnos()}" required>
 		        </div>
 	        </div>
 	        <h4>Horario:</h4>
@@ -117,7 +126,12 @@
 				    <select class="form-control" name="lunes" id="lunes">
 						<option value="0">- Seleccione una opción -</option>
 						<c:forEach items="${horas}" var="h">
-							<option value="${h.getPk_hora()}">${h.getHora()}</option>
+							<c:if test="${fk_horaLunes == h.getPk_hora()}">
+								<option value="${h.getPk_hora()}" selected>${h.getHora()}</option>
+							</c:if>
+							<c:if test="${fk_horaLunes != h.getPk_hora()}">
+								<option value="${h.getPk_hora()}">${h.getHora()}</option>
+							</c:if>
 						</c:forEach>
 					</select>
 				</div>
@@ -126,7 +140,12 @@
 				    <select class="form-control" name="martes" id="martes">
 						<option value="0">- Seleccione una opción -</option>
 						<c:forEach items="${horas}" var="h">
-							<option value="${h.getPk_hora()}">${h.getHora()}</option>
+							<c:if test="${fk_horaMartes == h.getPk_hora()}">
+								<option value="${h.getPk_hora()}" selected>${h.getHora()}</option>
+							</c:if>
+							<c:if test="${fk_horaMartes != h.getPk_hora()}">
+								<option value="${h.getPk_hora()}">${h.getHora()}</option>
+							</c:if>
 						</c:forEach>
 					</select>
 				</div>
@@ -135,7 +154,12 @@
 				    <select class="form-control" name="miercoles" id="miercoles">
 						<option value="0">- Seleccione una opción -</option>
 						<c:forEach items="${horas}" var="h">
-							<option value="${h.getPk_hora()}">${h.getHora()}</option>
+							<c:if test="${fk_horaMiercoles == h.getPk_hora()}">
+								<option value="${h.getPk_hora()}" selected>${h.getHora()}</option>
+							</c:if>
+							<c:if test="${fk_horaMiercoles != h.getPk_hora()}">
+								<option value="${h.getPk_hora()}">${h.getHora()}</option>
+							</c:if>
 						</c:forEach>
 					</select>
 				</div>
@@ -146,7 +170,12 @@
 				    <select class="form-control" name="jueves" id="jueves">
 						<option value="0">- Seleccione una opción -</option>
 						<c:forEach items="${horas}" var="h">
-							<option value="${h.getPk_hora()}">${h.getHora()}</option>
+							<c:if test="${fk_horaJueves == h.getPk_hora()}">
+								<option value="${h.getPk_hora()}" selected>${h.getHora()}</option>
+							</c:if>
+							<c:if test="${fk_horaJueves != h.getPk_hora()}">
+								<option value="${h.getPk_hora()}">${h.getHora()}</option>
+							</c:if>
 						</c:forEach>
 					</select>
 				</div>
@@ -155,7 +184,12 @@
 				    <select class="form-control" name="viernes" id="viernes">
 						<option value="0">- Seleccione una opción -</option>
 						<c:forEach items="${horas}" var="h">
-							<option value="${h.getPk_hora()}">${h.getHora()}</option>
+							<c:if test="${fk_horaViernes == h.getPk_hora()}">
+								<option value="${h.getPk_hora()}" selected>${h.getHora()}</option>
+							</c:if>
+							<c:if test="${fk_horaViernes != h.getPk_hora()}">
+								<option value="${h.getPk_hora()}">${h.getHora()}</option>
+							</c:if>
 						</c:forEach>
 					</select>
 				</div>
@@ -163,7 +197,7 @@
 	        <br>
 	        <div class="form-group text-center">
 	            <input type="submit" name="boton" id="boton" value="Guardar" class="btn btn-success">
-	            <a href="MateriasServlet" class="btn btn-danger"> Cancelar </a>
+	            <a href="SabanaServlet" class="btn btn-danger"> Cancelar </a>
 		     </div>
 		</form>
 	</div>

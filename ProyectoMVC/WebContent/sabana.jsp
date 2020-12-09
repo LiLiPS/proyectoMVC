@@ -110,7 +110,7 @@
 					<a class="btn btn-sm btn-link text-info" href="DetalleSabanaServlet?id=${s.getPk_grupo()}">
 						<i class="fas fa-list-ul"></i> Detalles
 					</a><br>
-					<a class="btn btn-sm btn-link text-warning" href="CargarMaestroServlet?id=${s.getPk_grupo()}">
+					<a class="btn btn-sm btn-link text-warning" href="EditarGrupoServlet?id=${s.getPk_grupo()}">
 						<i class="fas fa-edit"></i> Editar
 					</a><br>
 					<a class="btn btn-sm btn-link text-danger" href="EliminarGrupoServlet?id=${s.getPk_grupo()}">
