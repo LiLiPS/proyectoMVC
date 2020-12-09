@@ -65,15 +65,15 @@ Siguiendo la estructura de MVC:
 ## Demo
 El sistema cuenta con las siguientes vistas y módulos.
 ### Inicio
-![Inicio](ProyectoMVC/WebContent/img/inicio.jpg)
+![Inicio](ProyectoMVC/WebContent/img/inicio.JPG)
 ### Inicio de sesión
-![Inicio de sesión](ProyectoMVC/WebContent/img/inicio_sesion.jpg)
+![Inicio de sesión](ProyectoMVC/WebContent/img/inicio_sesion.JPG)
 ### Administrador
 #### Módulo de Carreras
 ### Maestro
 #### Reporte de horarios
 #### Perfil 
-![Perfil](ProyectoMVC/WebContent/img/perfil.jpg)
+![Perfil](ProyectoMVC/WebContent/img/perfil.JPG)
 ### Jefe
 #### Seleccionar una carrera
 #### Módulo de materias
