@@ -1,0 +1,7 @@
+FROM tomcat:9.0.1-jre8-alpine
+
+COPY ProyectoMVC.war /usr/local/tomcat/webapps/ProyectoMVC.war
+
+EXPOSE 8088
+
+CMD ["catalina.sh", "run"]

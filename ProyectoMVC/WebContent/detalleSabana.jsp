@@ -75,7 +75,6 @@
 			<table class="table table-hover table-bordered table-striped" border=1>
 			<thead>
 				<tr class="cabecera text-center">
-					<!--  <th scope="col">Clave horario</th>	-->
 					<th scope="col">Grupo</th>
 					<th scope="col">No. Alumnos</th>
 					<th scope="col">Aula</th>

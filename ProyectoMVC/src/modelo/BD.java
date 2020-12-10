@@ -8,12 +8,14 @@ public class BD {
 	private String jdbcHost, jdbcPort, jdbcDatabase, connectionUrl, username, password;
 
 	public BD() {
-		jdbcHost = "localhost";
+		//jdbcHost = "localhost";
+		jdbcHost = "db";
 		jdbcPort = "3306";
 		jdbcDatabase = "proyectomvc";
 		connectionUrl = "jdbc:mysql://" + jdbcHost + ":" + jdbcPort + "/" + jdbcDatabase;
 		username = "root";
-		password = "";
+		//password = "";
+		password = "root";
 	}
 	
 	public Connection getConnection(){  

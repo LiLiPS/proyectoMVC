@@ -108,8 +108,7 @@
 		<c:if test="${rol == 'administrador'}">
 			<br>
 			<h4>
-				Para consultar la lista de carreras da clic en "Lista carreras"<br>
-				Para consultar la lista de jefes de carrera da clic en "Lista de jefes"
+				Para consultar la lista de carreras da clic en "Lista carreras"
 			</h4>
 		</c:if>
 	</div>

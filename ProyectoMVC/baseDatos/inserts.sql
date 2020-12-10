@@ -95,9 +95,10 @@ values (1, 1),
 
 /*MATERIAS*/
 INSERT INTO materia (clave_materia, nombre, fk_carrera, semestre, horas_t, horas_p, creditos) VALUES
-('ACF0901', 'CÁLCULO DIFERENCIAL', 1, 1, 3, 2, 5),
-('AED1285', 'FUNDAMENTOS DE PROGRAMACIÓN', 1, 1, 2, 3, 5),
 ('AEF1041', 'MATEMÁTICAS DISCRETAS', 1, 1, 3, 2, 5),
+('AED1285', 'FUNDAMENTOS DE PROGRAMACIÓN', 1, 1, 2, 3, 5),
+('EMH1016', 'INTRODUCCIÓN A LA PROGRAMACIÓN', 3, 1, 2, 2, 4),
+('ACF0901', 'CÁLCULO DIFERENCIAL', 1, 1, 3, 2, 5);
 ('SCH1024', 'TALLER DE ADMINISTRACIÓN', 1, 1, 1, 3, 4),
 ('ACC0906', 'FUNDAMENTOS DE INVESTIGACIÓN', 1, 1, 2, 2, 4),
 ('ACA0907', 'TALLER DE ÉTICA', 1, 1, 0, 4, 4),
@@ -146,7 +147,6 @@ INSERT INTO materia (clave_materia, nombre, fk_carrera, semestre, horas_t, horas
 ('DAD1403', 'PROGRAMACIÓN WEB AVANZADA', 1, 9, 2, 3, 5),
 ('DAD1404', 'ARQUITECTURA DE APLICACIONES EMPRESARIALES', 1, 9, 2, 3, 5),
 ('DAB1405', 'DESARROLLO DE APLICACIONES PARA DISPOSITIVOS MÓVILES', 1, 9, 2, 3, 5),
-('EMH1016', 'INTRODUCCIÓN A LA PROGRAMACIÓN', 3, 1, 2, 2, 4),
 ('AEF1390', 'DIBUJO ELECTROMECÁNICO', 3, 2, 3, 2, 5),
 ('AEC1047', 'METROLOGÍA Y NORMALIZACIÓN', 3, 2, 2, 2, 4),
 ('EME1012', 'ESTÁTICA', 3, 2, 2, 2, 4),
@@ -172,12 +172,6 @@ INSERT INTO materia (clave_materia, nombre, fk_carrera, semestre, horas_t, horas
 ('INN1008', 'DIBUJO INDUSTRIAL', 5, 1, 3, 3, 6),
 ('INH1029', 'TALLER DE HERRAMIENTAS INTELECTUALES', 5, 1, 2, 2, 4),
 ('INC1009', 'ELECTRICIDAD Y ELECTRÓNICA INDUSTRIAL', 5, 2, 2, 2, 4);	   
-	
-INSERT INTO materia (fk_carrera, clave_materia, nombre, semestre, horas_t, horas_p, creditos)
-values (1, 'AEF1041', 'MATEMÁTICAS DISCRETAS', 1, 3, 2, 5),
-	   (1, 'AED1285', 'FUNDAMENTOS DE PROGRAMACIÓN', 1, 2, 3, 5),
-	   (3, 'EMH1016', 'INTRODUCCIÓN A LA PROGRAMACIÓN', 1, 2, 2, 4),
-	   (1, 'ACF0901', 'CÁLCULO DIFERENCIAL', 1, 3, 2, 5);
 	   
 /*HORAS*/
 INSERT INTO hora
@@ -196,12 +190,12 @@ values (1, '07:00-08:40'),
 
 /*GRUPOS*/
 INSERT INTO grupo (fk_usuario, fk_materia, clave_grupo,grupo,aula,periodo,turno,alumnos)
-values(1, 1,'4007','G01','A','D1','Agosto-Diciembre/2020','Matutino',34);
+values(20, 1,'4007','A','D1','Agosto-Diciembre/2020','Matutino',34);
 
 /*HORARIOS*/
 INSERT INTO horario (fk_grupo, fk_hora, dia)
-values(1, 4, 2),
-	  (1, 4, 4),
-	  (1, 6, 5);
+values(7, 4, 2),
+	  (7, 4, 4),
+	  (7, 6, 5);
 
 	   

@@ -5,9 +5,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<link rel="stylesheet" href="estilos/estilos.css">
-<title>Editar materia</title>
+	<meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    
+	<title>Editar materia</title>
 </head>
 <body class="body">
 <% 
@@ -25,55 +31,60 @@
 	} else 
 		out.print("<script>location.replace('login.jsp');</script>");
 %>
-<header id="menu">
-	<ul id="button">
-		<li><a href="MateriasServlet">Regresar</a></li>
-		<li><a href="menu.jsp">Regresar a menú</a></li>
-		<li><a href="LogoutServlet">Cerrar sesión</a></li>
-	</ul>
-</header>
-<h1 style="text-align: center">Editar una materia</h1>
-<div id="contenedor">
-	<form action="EditarMateriaServlet" method="post">
-		<div id="formulario">
-			<table>
-				<tr>
-					<td><input type="hidden" name="carrera" id="carrera" value="${materia.getFk_carrera()}"/></td>
-				</tr>
-				<tr>
-					<td><input type="hidden" name="id_materia" id="id_materia" value="${materia.getPk_materia()}"/></td>
-				</tr>
-				<tr>
-					<td><label for="clave_materia">Clave materia: </label></td>
-					<td><input type="text" name="clave_materia" id="clave_materia" value="${materia.getClave_materia()}"/></td>
-				</tr>
-				<tr>
-					<td><label for="nombre">Nombre: </label></td>
-					<td><input type="text" name="nombre" id="nombre" value="${materia.getNombre()}"/></td>
-				</tr>
-				<tr>
-					<td><label for="semestre">Semestre: </label></td>
-					<td><input type="number" name="semestre" id="semestre" class="number" value="${materia.getSemestre()}"/></td>
-				</tr>
-				<tr>
-					<td><label for="horas_t">Horas teóricas: </label></td>
-					<td><input type="number" name="horas_t" id="horas_t" class="number" value="${materia.getHoras_t()}"/></td>
-				</tr>
-				<tr>
-					<td><label for="horas_p">Horas prácticas: </label></td>
-					<td><input type="number" name="horas_p" id="horas_p" class="number" value="${materia.getHoras_p()}"/></td>
-				</tr>
-				<tr>
-					<td><label for="creditos">Créditos: </label></td>
-					<td><input type="number" name="creditos" id="creditos" class="number" value="${materia.getCreditos()}"/></td>
-				</tr>
-				<tr>
-					<td colspan="2" align="center"><input type="submit"
-						name="boton" id="boton" value="Editar"/></td>
-				</tr>
-			</table>
+	<nav class="navbar navbar-expand-lg navbar-light"	style="background-color: #D5D5D5;">
+		<a class="navbar-brand" href="#">Administración de materias</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item"><a class="nav-link" href="MateriasServlet">Regresar</a></li>
+				<li class="nav-item"><a class="nav-link" href="menu.jsp">Regresar a menú</a></li>
+				<li class="nav-item"><a class="nav-link" href="LogoutServlet">Cerrar sesión</a></li>
+			</ul>
 		</div>
-	</form>
-</div>
+	</nav>
+	
+	<br>
+	<div class="container">
+		<h1 style="text-align: center">Editar una materia</h1>
+		<br>
+		<form action="EditarMateriaServlet" method="post">
+			<input type="hidden" name="carrera" id="carrera" value="${materia.getFk_carrera()}"/>
+			<input type="hidden" name="id_materia" id="id_materia" value="${materia.getPk_materia()}"/>
+			<div class="form-group">
+	            <label for="clave_materia">Clave materia: </label>
+	            <input type="text" name="clave_materia" id="clave_materia" class="form-control" value="${materia.getClave_materia()}" required/>
+	        </div>
+	        <div class="form-group">
+	            <label for="nombre">Nombre: </label>
+	            <input type="text" name="nombre" id="nombre" class="form-control" value="${materia.getNombre()}" required/>
+	        </div>
+	        <div class="form-group">
+	            <label for="semestre">Semestre: </label>
+	            <input type="number" name="semestre" id="semestre" class="form-control" value="${materia.getSemestre()}" required/>
+	        </div>
+	        <div class="form-group">
+	            <label for="horas_t">Horas teóricas: </label>
+	            <input type="number" name="horas_t" id="horas_t" class="form-control" value="${materia.getHoras_t()}" required/>
+	        </div>
+	        <div class="form-group">
+	            <label for="horas_p">Horas prácticas: </label>
+	            <input type="number" name="horas_p" id="horas_p" class="form-control" value="${materia.getHoras_p()}" required/>
+	        </div>
+	        <div class="form-group">
+	            <label for="creditos">Créditos: </label>
+	            <input type="number" name="creditos" id="creditos" class="form-control" value="${materia.getCreditos()}" required/>
+	        </div>
+	        <div class="form-group text-center">
+	            <input type="submit" name="boton" id="boton" value="Editar" class="btn btn-success"/>
+	            <a href="MateriasServlet" class="btn btn-danger"> Cancelar </a>
+	        </div>
+		</form>
+	</div>
 </body>
 </html>
