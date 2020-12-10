@@ -45,12 +45,15 @@
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item"><a class="nav-link" href="MaestrosServlet">Regresar</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" href="menu.jsp">Regresar a menú</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" href="LogoutServlet">Cerrar sesión</a>
-				</li>
+				<c:if test="${rol == 'jefe' || rol == 'jefe_maestro'}">
+					<li class="nav-item"><a class="nav-link" href="MaestrosServlet">Regresar</a></li>
+					<li class="nav-item"><a class="nav-link" href="menu.jsp">Regresar a menú</a></li>
+					<li class="nav-item"><a class="nav-link" href="LogoutServlet">Cerrar sesión</a></li>
+				</c:if>
+				<c:if test="${rol == 'maestro' }">
+					<li class="nav-item"><a class="nav-link" href="menu.jsp">Regresar a menú</a></li>
+					<li class="nav-item"><a class="nav-link" href="LogoutServlet">Cerrar sesión</a></li>
+				</c:if>
 			</ul>
 		</div>
 	</nav>

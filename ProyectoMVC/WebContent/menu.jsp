@@ -78,9 +78,6 @@
 						<a class="nav-link" href="ListaCarrerasServlet">Lista de carreras</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="JefesServlet">Lista de jefes</a>
-					</li>
-					<li class="nav-item">
 						<a class="nav-link" href="LogoutServlet">Cerrar sesión</a>
 					</li>
 				</c:if>
