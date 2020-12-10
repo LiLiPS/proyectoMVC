@@ -80,6 +80,28 @@ public class HorarioDAO {
         return lista;  
     }
 	
+	public static int getHorasArchivo(String hora){
+		BD bdConexion = new BD();
+        int pk_hora = 0;
+        String instruccion = "select pk_hora from hora where hora = ?";
+          
+        try{  
+            Connection con = bdConexion.getConnection();  
+            PreparedStatement ps = con.prepareStatement(instruccion);  
+            ps.setString(1,hora); 
+            ResultSet rs = ps.executeQuery();  
+            while(rs.next()){  
+            	HoraBean h = new HoraBean();  
+                pk_hora = rs.getInt("pk_hora");
+            }  
+            con.close();  
+        }catch(Exception e){
+        	e.printStackTrace();
+        }  
+          
+        return pk_hora;  
+    }
+	
 	public static boolean validaHorario(int usuario, int hora, int dia){
 		BD bdConexion = new BD();
         String instruccion = "select * from view_horas where fk_usuario=? AND fk_hora=? AND dia=?";

@@ -93,6 +93,31 @@ public class UsuarioDAO {
 		return lista;
 	}
 	
+	public static int usuariosClaveArchivo(String nombre) {
+		BD bdConexion = new BD();
+		int pk_usuario = 0;
+		
+		String instruccion = "select usuario.pk_usuario from usuario "
+				+ "where  CONCAT(usuario.titulo, ' ', usuario.apellido_paterno,' ', usuario.apellido_materno, ' ',usuario.nombre) = ?";
+		
+		try {
+			Connection con = bdConexion.getConnection();
+			PreparedStatement ps = con.prepareStatement(instruccion);
+			ps.setString(1,nombre);  		
+
+			ResultSet rs = ps.executeQuery();
+			if(rs.next()){ 
+				pk_usuario = rs.getInt("pk_usuario"); 
+			}
+			
+			con.close(); 
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return pk_usuario;
+	}
+	
 	public static List<LoginBean> usuariosbyCarrera(int id_carrera) {
 		BD bdConexion = new BD();
 		List<LoginBean> lista = new ArrayList<LoginBean>();

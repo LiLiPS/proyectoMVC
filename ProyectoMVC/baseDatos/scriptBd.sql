@@ -86,6 +86,10 @@ CREATE TABLE horario(
 	FOREIGN KEY (fk_hora) REFERENCES hora(pk_hora)	
 );
 
+/*Consulta para archivo*/
+select usuario.pk_usuario, CONCAT(usuario.titulo, ' ', usuario.nombre, ' ', usuario.apellido_paterno,' ', usuario.apellido_materno) as nombreMaestro
+from usuario
+
 CREATE VIEW view_usuarios as 
 select usuario.*, rol.*, carrera.*, departamento.*   
 from usuario 

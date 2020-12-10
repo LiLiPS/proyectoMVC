@@ -168,6 +168,25 @@ public class MateriaDAO {
         return lista;  
     }
 	
+	public static int getMateriasbyClaveArchivo(String clave){ 
+		BD bdConexion = new BD();
+		int pk_materia = 0;
+        String instruccion = "select pk_materia from view_materias where clave_materia= ?";
+          
+        try{  
+            Connection con = bdConexion.getConnection();  
+            PreparedStatement ps = con.prepareStatement(instruccion);  
+            ps.setString(1,clave);  
+            ResultSet rs = ps.executeQuery(); 
+            if(rs.next()){    
+                pk_materia = rs.getInt("pk_materia");  
+            }  
+            con.close();  
+        }catch(Exception e){e.printStackTrace();}  
+          
+        return pk_materia;  
+    }
+	
 	public static List<MateriaBean> getMateriasbyCarrera(int id_carrera){ 
 		BD bdConexion = new BD();
         List<MateriaBean> lista = new ArrayList<MateriaBean>(); 

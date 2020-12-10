@@ -57,6 +57,20 @@
 	<h2 class="text-center">Sábana de horarios</h2>
 	<hr>
 	<div class="row">
+		<div class="col col-lg-6">
+			<h5 >Carga masiva</h5>
+			<form class="form-inline" action='CargarArchivoSerlvet' method='post' enctype="multipart/form-data">
+				<div class="input-group mb-3">
+					<input type='file' name='archivo' id="archivo" class="form-control">
+				  <div class="input-group-append">
+				    <button class="btn btn-outline-secondary btn-outline-secondary " type="submit">Subir archivo</button>
+				  </div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<hr>
+	<div class="row">
 		<div class="col col-lg-5">
 			<form class="form-inline" action='MaestrosServlet' method='post'>
 				<div class="form-group mx-sm-3 mb-2">
@@ -66,11 +80,9 @@
 				<input type='hidden' name='sts' value='buscar'>
 			</form>
 		</div>
-		<div class="col col-lg-5"><a class="btn btn-success btn-outline-success" href="form.php">
-				Subir archivo
-			</a></div>
+		<div class="col col-lg-5">
+		</div>
 		<div class="col col-lg-2">
-			
 			<a class="btn btn-success btn-outline-success" href="NuevoGrupoServlet">
 				Crear grupo
 			</a>
