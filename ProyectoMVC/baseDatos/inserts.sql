@@ -90,8 +90,8 @@ INSERT INTO usuario (clave_usuario, titulo, apellido_paterno, apellido_materno, 
  
 /*JEFES CARRERA*/
 INSERT INTO jefe_carrera (fk_usuario, fk_carrera)
-values (1, 1),
-	   (1, 2);
+values (20, 1),
+	   (20, 2);
 
 /*MATERIAS*/
 INSERT INTO materia (clave_materia, nombre, fk_carrera, semestre, horas_t, horas_p, creditos) VALUES
