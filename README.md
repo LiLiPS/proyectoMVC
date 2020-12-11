@@ -14,8 +14,9 @@ Este es el proyecto final de la materia "Programación Web Avanzada" y fue reali
   * [Inicio de sesión](#inicio-de-sesión)
   * [Administrador](#administrador)
     * [Módulo de Carreras](#módulo-de-carreras)
+    * [Lista de maestros por carrera](#lista-de-maestros-por-carrera)
   * [Maestro](#maestro)
-    * [Reporte de horarios](#reporte-de-horarios)
+    * [Reporte de materias](#reporte-de-materias)
     * [Perfil](#perfil)
   * [Jefe](#jefe)
     * [Seleccionar una carrera](#seleccionar-una-carrera)
@@ -70,17 +71,27 @@ El sistema cuenta con las siguientes vistas y módulos.
 ![Inicio de sesión](ProyectoMVC/WebContent/img/inicio_sesion.JPG)
 ### Administrador
 #### Módulo de Carreras
+
+#### Lista de maestros por carrera
+![Lista de maestros por carrera](ProyectoMVC/WebContent/img/maestros_carrera.JPG)
 ### Maestro
-#### Reporte de horarios
+#### Reporte de materias
+![Reporte de materias](ProyectoMVC/WebContent/img/reporte_maestro_usuario.JPG)
 #### Perfil 
 ![Perfil](ProyectoMVC/WebContent/img/perfil.JPG)
 ### Jefe
 #### Seleccionar una carrera
+![Seleccionar una carrera](ProyectoMVC/WebContent/img/seleccionar_carrera.JPG)
 #### Módulo de materias
+![Módulo de materias](ProyectoMVC/WebContent/img/lista_materias.JPG)
 #### Módulo de maestros
+![Módulo de maestros](ProyectoMVC/WebContent/img/lista_maestros.JPG)
 #### Reporte de un maestro
+![Reporte de un maestro](ProyectoMVC/WebContent/img/reporte_maestro.JPG)
 #### Sábana de horarios
+![Sábana de horarios](ProyectoMVC/WebContent/img/sabana.JPG)
 #### Detalle de un horario
+![Detalle de un horario](ProyectoMVC/WebContent/img/detalle_horario.JPG)
 
 ## Cómo clonar el proyecto
 
@@ -89,6 +100,22 @@ El sistema cuenta con las siguientes vistas y módulos.
 ### Utilizando Docker
 
 ## Acceso al sistema 
+Para poder acceder al sistema se cuenta con los siguientes usuarios y contraseñas:
+```
+~ Administrador ~
+👤 lparada060
+🔐 1234
+
+~ Jefe de carrera ~
+👤 aaguila015
+🔐 1234
+
+~ Maestro ~
+👤 ebermudez014
+🔐 1234
+```
+Para encontrar más usuarios con los que ingresar al sistema, consulta el documento de registros a la base de datos: 
+[Registros](ProyectoMVC/baseDatos/inserts.sql)
 
 ## Vista Previa
 
