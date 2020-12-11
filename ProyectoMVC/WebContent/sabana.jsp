@@ -72,7 +72,7 @@
 	<hr>
 	<div class="row">
 		<div class="col col-lg-5">
-			<form class="form-inline" action='MaestrosServlet' method='post'>
+			<form class="form-inline" action='SabanaServlet' method='post'>
 				<div class="form-group mx-sm-3 mb-2">
 					<input type='text' placeholder='Clave horario' name='claveH' class="form-control">
 				</div>

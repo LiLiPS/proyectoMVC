@@ -22,6 +22,7 @@ public class SabanaServlet extends HttpServlet {
 	List<SabanaBean> list = new ArrayList<SabanaBean>();
 	String rol, pagina;
 	HttpSession session;
+	String estadoPagina = "nada";
        
     public SabanaServlet() {
         super();
@@ -50,7 +51,30 @@ public class SabanaServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		session = request.getSession(false);
+		int id_c = Integer.parseInt(session.getAttribute("pk_carrera").toString());
+		String sid = request.getParameter("claveH");
+		String clave = sid;
+		
+		try { 
+			estadoPagina = request.getParameter("sts");
+			if (estadoPagina == null) {
+				estadoPagina = "nada";
+				list = SabanaDAO.getSabanaBean(id_c);
+			}
+			if (estadoPagina.equals("buscar")) {
+				if (clave == "") {
+					list = SabanaDAO.getSabanaBean(id_c);
+				}else
+					list = SabanaDAO.getSabanabyClave(clave);
+			}
+		} catch (Exception exx) {
+			exx.printStackTrace();
+		}
+		
+		request.setAttribute("sabana",list);
+		RequestDispatcher dispatcher = request.getRequestDispatcher(pagina);
+		dispatcher.forward(request, response);
 	}
 
 }
