@@ -105,9 +105,9 @@ public class CrearGrupoServlet extends HttpServlet {
 					}else  
 						pagina = "/crearGrupo.jsp";
 				}
-				
+				pagina = "SabanaServlet";
 			}
-
+			pagina = "SabanaServlet";
 		} else 
 			pagina = "/login.jsp";
 
