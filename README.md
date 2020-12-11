@@ -71,7 +71,7 @@ El sistema cuenta con las siguientes vistas y módulos.
 ![Inicio de sesión](ProyectoMVC/WebContent/img/inicio_sesion.JPG)
 ### Administrador
 #### Módulo de Carreras
-
+![Módulo de Carreras](ProyectoMVC/WebContent/img/lista_carreras.JPG)
 #### Lista de maestros por carrera
 ![Lista de maestros por carrera](ProyectoMVC/WebContent/img/maestros_carrera.JPG)
 ### Maestro
