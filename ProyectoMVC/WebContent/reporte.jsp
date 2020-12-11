@@ -64,8 +64,6 @@
 	<hr>
 	<h6 style="text-align:center">
 		INSTITUTO TECNOLÓGICO DE LEÓN <br>
-		DEPARTAMENTO DE SISTEMAS Y COMPUTACIÓN <br>
-		PROGRAMACIÓN DE AGOSTO A DICIEMBRE 2020 <br>
 	</h6>
 	<br>
 	<table class="table table-hover table-bordered table-striped" border=1>
